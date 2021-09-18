@@ -1,27 +1,38 @@
-# flutter-devcontainer
-GitHub Codespace - Flutter 개발 환경 자동 생성 파일
+# Donation Visualization
 
-본 저장소를 활용하여 Flutter 개발 환경이 모두 설정 되어 있는 GitHub Codespace 를 바로 생성할 수 있습니다.  
-Flutter 개발 환경이 설정된 Codespace 를 설정 하려면 아래 절차를 수행합니다.
+## 프로잭트 소개
+- 사람들의 기부 내역을 시각화 해주는 앱
 
-## 저장소 및 Codespace 생성
-- [여기를 클릭하여 본 저장소를 템플릿으로 새 저장소를 생성합니다.](https://github.com/osamhack2021/flutter-devcontainer/generate)
-  - **Owner** 를 `osamhack2021` 로 지정하고, **Repository name**은 원하는 저장소 이름을 입력합니다.
-- 새로 생성된 저장소에서 Codespace 를 생성 하면 자동으로 Flutter 개발 환경이 구축된 Codespace 가 생성 됩니다.
 
-## Flutter 프로젝트 생성 및 테스트
+## 기능 설명
+ - 기부 목록 표시
+ - 기부자들의 메세지 표시
+ - 지도상의 기부장소 표시
+ - 2D, 3D, VR 등을 통해 시각화
 
-아래 명령으로 `myapp` 프로젝트를 생성하고, 테스트를 위해 웹 앱 형태로 실행합니다.
-```bash
-flutter create myapp
-cd myapp
-flutter run -d web-server --web-hostname=0.0.0.0 
-``` 
+## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+* ECMAScript 6 지원 브라우저 사용
+* 권장: Google Chrome 버젼 77 이상
+* IOS >= 14 || android >= 10
 
-본 저장소를 활용하여 생성된 Codespace 에는 Android SDK 도 같이 설정되어 있습니다.
-별도 추가적인 절차 없이, 아래 명령줄로 Android 앱 APK 파일을 빌드할 수 있습니다.
-```bash
-flutter build apk
-```
+## 기술 스택 (Technique Used) 
+### Server(back-end)
+ -  nodejs v14.17.6
+ - express[typescript]
+ - MySQL, typeorm
+ 
+### Front-end
+ -  flutter
+ -  model-viewer
 
-Flutter 프로젝트 개발환경 구축, 앱 개발, 빌드 테스트 등에 관한 자세한 사항은, 별도로 전달 받으신 가이드 문서와 [Flutter 공식 문서](https://flutter.dev/)를 참고해 주시기 바랍니다.
+## 설치 안내 (Installation Process)
+app/README.md server/README.md 참고
+
+## 프로젝트 사용법 (Getting Started)
+ 
+## 팀 정보 (Team Information)
+- park min jun (minjunsz@gmail.com), Github Id: minjunsz
+- han jeong woo (gkswjddn0968@gmail.com), Github Id: P0BY
+
+## 저작권 및 사용권 정보 (Copyleft / End User License)
+ * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
