@@ -26,7 +26,9 @@
  -  model-viewer
 
 ## 설치 안내 (Installation Process)
-app/README.md server/README.md 참고
+기능별 README.md 파일 참고
+ - [app/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/app/README.md)
+ - [server/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/server/README.md)
 
 ## 프로젝트 사용법 (Getting Started)
  
@@ -35,4 +37,4 @@ app/README.md server/README.md 참고
 - han jeong woo (gkswjddn0968@gmail.com), Github Id: P0BY
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
- * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
+ * [MIT](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/license.md)
