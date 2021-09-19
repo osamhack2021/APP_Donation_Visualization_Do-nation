@@ -2,9 +2,8 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/codespaces-linux
 {
 	"name": "Flutter Dev environment (built on default Codespaces image)",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+	"dockerComposeFile": "docker-compose.yml",
+  	"service": "app",
 	"settings": {
 		"go.toolsManagement.checkForUpdates": "local",
 		"go.useLanguageServer": true,
