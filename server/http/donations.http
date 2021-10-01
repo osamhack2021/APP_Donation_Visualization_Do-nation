@@ -1,0 +1,15 @@
+GET http://localhost:8000/api/v1/donations/2
+
+###
+
+POST http://localhost:8000/api/v1/donations
+Content-Type: application/json
+
+{
+  "target_id": 1,
+  "donor_name": "minjun",
+  "message": "test message",
+  "phone": "+82 10-1111-1111",
+  "pay_won": 30000,
+  "password": "password"
+}

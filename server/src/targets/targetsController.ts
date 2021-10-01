@@ -12,9 +12,9 @@ import { TargetCreationParams, TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
-  @Get("{userId}")
-  public async getUser(@Path() userId: number): Promise<Target> {
-    return new TargetsService().get(userId);
+  @Get("{targetId}")
+  public async getUser(@Path() targetId: number): Promise<Target> {
+    return new TargetsService().get(targetId);
   }
 
   @SuccessResponse("201", "Created") // Custom success response
