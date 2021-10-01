@@ -1,13 +1,19 @@
-import { Route, Controller, Get, Body, Path, Post, Query, SuccessResponse } from "tsoa";
+import {
+  Route,
+  Controller,
+  Get,
+  Body,
+  Path,
+  Post,
+  SuccessResponse,
+} from "tsoa";
 import { Target } from "./target";
 import { TargetCreationParams, TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
   @Get("{userId}")
-  public async getUser(
-    @Path() userId: number
-  ): Promise<Target> {
+  public async getUser(@Path() userId: number): Promise<Target> {
     return new TargetsService().get(userId);
   }
 
