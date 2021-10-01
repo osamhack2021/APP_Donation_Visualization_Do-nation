@@ -2,10 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server for donation visualization app",
-  "main": "index.js",
+  "main": "src/app.ts",
   "scripts": {
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node  build/app.js"
+    "start": "node  build/app.js",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\""
   },
   "author": "minjunsz",
   "license": "ISC",
@@ -19,10 +20,13 @@
     "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
+    "concurrently": "^6.2.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }
 }
