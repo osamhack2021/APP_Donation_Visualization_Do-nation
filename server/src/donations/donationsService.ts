@@ -5,7 +5,7 @@ export type DonationDTO = Omit<Donation, "password">;
 
 export class DonationsService {
   public get(target_id: number): DonationDTO[] {
-    return [
+    const inMemoryData = [
       {
         id: 1,
         target_id,
@@ -31,6 +31,8 @@ export class DonationsService {
         pay_won: 15000,
       },
     ];
+
+    return inMemoryData.map((data) => Object.assign(new Donation(), data));
   }
 
   public create(donationCreationParams: DonationCreationParams): Donation {

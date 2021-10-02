@@ -51,13 +51,14 @@ const models: TsoaRoute.Models = {
             "image_url": {"dataType":"string","required":true},
             "name": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
+            "isFinished": {"dataType":"boolean","required":true},
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_Target.Exclude_keyofTarget.id__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lat":{"dataType":"double","required":true},"lng":{"dataType":"double","required":true},"objective_won":{"dataType":"double","required":true},"image_url":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"description":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lat":{"dataType":"double","required":true},"lng":{"dataType":"double","required":true},"objective_won":{"dataType":"double","required":true},"image_url":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"description":{"dataType":"string","required":true},"isFinished":{"dataType":"boolean","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Omit_Target.id_": {

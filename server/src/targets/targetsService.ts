@@ -4,7 +4,7 @@ export type TargetCreationParams = Omit<Target, "id">;
 
 export class TargetsService {
   public get(id: number): Target {
-    return {
+    return Object.assign(new Target(), {
       id,
       lat: 37.5,
       lng: 127,
@@ -12,7 +12,8 @@ export class TargetsService {
       image_url: "assets/test_img.jpg",
       name: "test target",
       description: "testtesttesttesttesttesttesttesttesttesttesttesttest",
-    };
+      isFinished: false,
+    });
   }
 
   public create(userCreationParams: TargetCreationParams): Target {
