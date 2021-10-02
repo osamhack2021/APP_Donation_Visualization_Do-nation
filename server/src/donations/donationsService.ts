@@ -1,4 +1,4 @@
-import { Donation } from "./donation";
+import { Donation } from "../entity/donation";
 
 export type DonationCreationParams = Omit<Donation, "id">;
 export type DonationDTO = Omit<Donation, "password">;

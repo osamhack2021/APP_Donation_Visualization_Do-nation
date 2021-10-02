@@ -1,4 +1,4 @@
-import { Target } from "./target";
+import { Target } from "../entity/target";
 
 export type TargetCreationParams = Omit<Target, "id">;
 

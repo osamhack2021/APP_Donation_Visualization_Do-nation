@@ -1,4 +1,4 @@
-export interface Donation {
+export class Donation {
   id: number;
   target_id: number;
   donor_name: string;

@@ -7,7 +7,7 @@ import {
   Post,
   SuccessResponse,
 } from "tsoa";
-import { Target } from "./target";
+import { Target } from "../entity/target";
 import { TargetCreationParams, TargetsService } from "./targetsService";
 
 @Route("targets")
