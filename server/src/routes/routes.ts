@@ -11,9 +11,40 @@ import * as express from 'express';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
+    "Target": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "lat": {"dataType":"double","required":true},
+            "lng": {"dataType":"double","required":true},
+            "objective_won": {"dataType":"double","required":true},
+            "image_url": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "isFinished": {"dataType":"boolean","required":true},
+            "donations": {"dataType":"array","array":{"dataType":"refObject","ref":"Donation"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Donation": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "target_id": {"dataType":"double","required":true},
+            "donor_name": {"dataType":"string","required":true},
+            "message": {"dataType":"string","required":true},
+            "phone": {"dataType":"string","required":true},
+            "pay_won": {"dataType":"double","required":true},
+            "password": {"dataType":"string","required":true},
+            "target": {"ref":"Target","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_Donation.Exclude_keyofDonation.password__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double","required":true},"target_id":{"dataType":"double","required":true},"donor_name":{"dataType":"string","required":true},"message":{"dataType":"string","required":true},"phone":{"dataType":"string","required":true},"pay_won":{"dataType":"double","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double","required":true},"target_id":{"dataType":"double","required":true},"donor_name":{"dataType":"string","required":true},"message":{"dataType":"string","required":true},"phone":{"dataType":"string","required":true},"pay_won":{"dataType":"double","required":true},"target":{"ref":"Target","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Omit_Donation.password_": {
@@ -28,7 +59,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_Donation.Exclude_keyofDonation.id__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"target_id":{"dataType":"double","required":true},"donor_name":{"dataType":"string","required":true},"message":{"dataType":"string","required":true},"phone":{"dataType":"string","required":true},"pay_won":{"dataType":"double","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"target_id":{"dataType":"double","required":true},"donor_name":{"dataType":"string","required":true},"message":{"dataType":"string","required":true},"phone":{"dataType":"string","required":true},"pay_won":{"dataType":"double","required":true},"target":{"ref":"Target","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Omit_Donation.id_": {
@@ -41,24 +72,9 @@ const models: TsoaRoute.Models = {
         "type": {"ref":"Omit_Donation.id_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Target": {
-        "dataType": "refObject",
-        "properties": {
-            "id": {"dataType":"double","required":true},
-            "lat": {"dataType":"double","required":true},
-            "lng": {"dataType":"double","required":true},
-            "objective_won": {"dataType":"double","required":true},
-            "image_url": {"dataType":"string","required":true},
-            "name": {"dataType":"string","required":true},
-            "description": {"dataType":"string","required":true},
-            "isFinished": {"dataType":"boolean","required":true},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_Target.Exclude_keyofTarget.id__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lat":{"dataType":"double","required":true},"lng":{"dataType":"double","required":true},"objective_won":{"dataType":"double","required":true},"image_url":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"description":{"dataType":"string","required":true},"isFinished":{"dataType":"boolean","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lat":{"dataType":"double","required":true},"lng":{"dataType":"double","required":true},"objective_won":{"dataType":"double","required":true},"image_url":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"description":{"dataType":"string","required":true},"isFinished":{"dataType":"boolean","required":true},"donations":{"dataType":"array","array":{"dataType":"refObject","ref":"Donation"},"required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Omit_Target.id_": {

@@ -13,11 +13,13 @@ CREATE TABLE `target` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE `donation` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `target_id` int NOT NULL,
   `donor_name` varchar(100) NOT NULL,
   `message` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `pay_won` int NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+  `targetId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_e4d196fad5b527519f8a579d2e6` (`targetId`),
+  CONSTRAINT `FK_e4d196fad5b527519f8a579d2e6` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 101 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;

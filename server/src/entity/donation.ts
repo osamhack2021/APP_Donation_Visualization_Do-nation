@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  BaseEntity,
+} from "typeorm";
+import { Target } from "./target";
 
 @Entity()
 export class Donation extends BaseEntity {
@@ -22,4 +29,7 @@ export class Donation extends BaseEntity {
 
   @Column()
   password: string;
+
+  @ManyToOne(() => Target, (target) => target.donations)
+  target: Target;
 }

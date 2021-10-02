@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Donation } from "./donation";
 
 @Entity()
 export class Target extends BaseEntity {
@@ -25,4 +32,7 @@ export class Target extends BaseEntity {
 
   @Column()
   isFinished: boolean;
+
+  @OneToMany(() => Donation, (donation) => donation.target)
+  donations: Donation[];
 }

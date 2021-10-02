@@ -5,822 +5,824 @@
 DROP TABLE IF EXISTS donation;
 CREATE TABLE `donation` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `target_id` int NOT NULL,
   `donor_name` varchar(100) NOT NULL,
   `message` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `pay_won` int NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `targetId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_e4d196fad5b527519f8a579d2e6` (`targetId`),
+  CONSTRAINT `FK_e4d196fad5b527519f8a579d2e6` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 101 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO
   donation(
     id,
-    target_id,
     donor_name,
     message,
     phone,
     pay_won,
-    password
+    password,
+    targetId
   )
 VALUES(
     1,
-    6,
     'ruajr',
     'sflkl',
     '+82 10-0000-0000',
     65000,
-    'nfdcb'
+    'nfdcb',
+    6
   ),(
     2,
-    4,
     'imwjj',
     'tbebn',
     '+82 10-0000-0000',
     40000,
-    'mrwve'
+    'mrwve',
+    4
   ),(
     3,
-    2,
     'cfncg',
     'ubebh',
     '+82 10-0000-0000',
     15000,
-    'ynngj'
+    'ynngj',
+    2
   ),(
     4,
-    8,
     'bkcpq',
     'vilgk',
     '+82 10-0000-0000',
     50000,
-    'mxojh'
+    'mxojh',
+    8
   ),(
     5,
-    9,
     'gusmg',
     'ygcza',
     '+82 10-0000-0000',
     35000,
-    'ededb'
+    'ededb',
+    9
   ),(
     6,
-    9,
     'drory',
     'ccpjc',
     '+82 10-0000-0000',
     20000,
-    'zygju'
+    'zygju',
+    9
   ),(
     7,
-    2,
     'tyvzm',
     'popfk',
     '+82 10-0000-0000',
     70000,
-    'umkuo'
+    'umkuo',
+    2
   ),(
     8,
-    10,
     'itung',
     'yuuvi',
     '+82 10-0000-0000',
     90000,
-    'hopzw'
+    'hopzw',
+    10
   ),(
     9,
-    3,
     'vecje',
     'rexkx',
     '+82 10-0000-0000',
     35000,
-    'kamqh'
+    'kamqh',
+    3
   ),(
     10,
-    7,
     'ouddb',
     'hediy',
     '+82 10-0000-0000',
     25000,
-    'jgdvo'
+    'jgdvo',
+    7
   ),(
     11,
-    3,
     'ykxiw',
     'wexmx',
     '+82 10-0000-0000',
     80000,
-    'xdpmp'
+    'xdpmp',
+    3
   ),(
     12,
-    5,
     'ljkhu',
     'corhz',
     '+82 10-0000-0000',
     40000,
-    'tgwcn'
+    'tgwcn',
+    5
   ),(
     13,
-    3,
     'uacps',
     'zufvf',
     '+82 10-0000-0000',
     75000,
-    'xomvk'
+    'xomvk',
+    3
   ),(
     14,
-    8,
     'adqdi',
     'mqdzk',
     '+82 10-0000-0000',
     90000,
-    'pvchi'
+    'pvchi',
+    8
   ),(
     15,
-    2,
     'vsfwy',
     'agqlj',
     '+82 10-0000-0000',
     20000,
-    'tzkku'
+    'tzkku',
+    2
   ),(
     16,
-    3,
     'liten',
     'offtv',
     '+82 10-0000-0000',
     35000,
-    'bdynr'
+    'bdynr',
+    3
   ),(
     17,
-    7,
     'jwoth',
     'epyxx',
     '+82 10-0000-0000',
     25000,
-    'ospnv'
+    'ospnv',
+    7
   ),(
     18,
-    9,
     'ewqyi',
     'vkbfb',
     '+82 10-0000-0000',
     5000,
-    'xsfpm'
+    'xsfpm',
+    9
   ),(
     19,
-    3,
     'rhnyj',
     'cidnc',
     '+82 10-0000-0000',
     45000,
-    'xqabh'
+    'xqabh',
+    3
   ),(
     20,
-    5,
     'xsern',
     'tyxxj',
     '+82 10-0000-0000',
     10000,
-    'vzhsw'
+    'vzhsw',
+    5
   ),(
     21,
-    2,
     'aedpp',
     'pgnsx',
     '+82 10-0000-0000',
     85000,
-    'dskhm'
+    'dskhm',
+    2
   ),(
     22,
-    5,
     'paxsw',
     'gcsvd',
     '+82 10-0000-0000',
     85000,
-    'wdgai'
+    'wdgai',
+    5
   ),(
     23,
-    2,
     'daows',
     'unbum',
     '+82 10-0000-0000',
     20000,
-    'ubqru'
+    'ubqru',
+    2
   ),(
     24,
-    5,
     'hxibt',
     'rldhq',
     '+82 10-0000-0000',
     65000,
-    'hydmw'
+    'hydmw',
+    5
   ),(
     25,
-    5,
     'rqysg',
     'szbjx',
     '+82 10-0000-0000',
     90000,
-    'mancu'
+    'mancu',
+    5
   ),(
     26,
-    6,
     'folcs',
     'wajdt',
     '+82 10-0000-0000',
     65000,
-    'dsgik'
+    'dsgik',
+    6
   ),(
     27,
-    7,
     'suzws',
     'rcose',
     '+82 10-0000-0000',
     85000,
-    'hgshe'
+    'hgshe',
+    7
   ),(
     28,
-    9,
     'rslpd',
     'xtcfj',
     '+82 10-0000-0000',
     30000,
-    'wckzk'
+    'wckzk',
+    9
   ),(
     29,
-    5,
     'rtbfc',
     'ounkl',
     '+82 10-0000-0000',
     70000,
-    'nsion'
+    'nsion',
+    5
   ),(
     30,
-    8,
     'eeyil',
     'rgevd',
     '+82 10-0000-0000',
     45000,
-    'kcjqc'
+    'kcjqc',
+    8
   ),(
     31,
-    10,
     'racrq',
     'fqqbi',
     '+82 10-0000-0000',
     60000,
-    'mqqlp'
+    'mqqlp',
+    10
   ),(
     32,
-    5,
     'buwdr',
     'kvjtj',
     '+82 10-0000-0000',
     35000,
-    'vjbsp'
+    'vjbsp',
+    5
   ),(
     33,
-    2,
     'kpndq',
     'hyhpk',
     '+82 10-0000-0000',
     20000,
-    'gfhlw'
+    'gfhlw',
+    2
   ),(
     34,
-    8,
     'ztrkh',
     'lhgwd',
     '+82 10-0000-0000',
     50000,
-    'jfsif'
+    'jfsif',
+    8
   ),(
     35,
-    3,
     'souyn',
     'dtrtm',
     '+82 10-0000-0000',
     70000,
-    'nolcd'
+    'nolcd',
+    3
   ),(
     36,
-    9,
     'bqynf',
     'qflnx',
     '+82 10-0000-0000',
     40000,
-    'tggox'
+    'tggox',
+    9
   ),(
     37,
-    9,
     'alyoq',
     'kgozq',
     '+82 10-0000-0000',
     70000,
-    'mkosk'
+    'mkosk',
+    9
   ),(
     38,
-    6,
     'cnimq',
     'nbidi',
     '+82 10-0000-0000',
     30000,
-    'seipd'
+    'seipd',
+    6
   ),(
     39,
-    6,
     'xlcsw',
     'nkcjh',
     '+82 10-0000-0000',
     70000,
-    'pxxgh'
+    'pxxgh',
+    6
   ),(
     40,
-    8,
     'jtsdp',
     'tadtx',
     '+82 10-0000-0000',
     65000,
-    'unmpw'
+    'unmpw',
+    8
   ),(
     41,
-    3,
     'pywwh',
     'whjso',
     '+82 10-0000-0000',
     55000,
-    'qjghn'
+    'qjghn',
+    3
   ),(
     42,
-    6,
     'rgmlu',
     'ppvbg',
     '+82 10-0000-0000',
     50000,
-    'ydxay'
+    'ydxay',
+    6
   ),(
     43,
-    3,
     'hnssq',
     'xcclb',
     '+82 10-0000-0000',
     90000,
-    'pjzhq'
+    'pjzhq',
+    3
   ),(
     44,
-    5,
     'lcqph',
     'ioqit',
     '+82 10-0000-0000',
     90000,
-    'nijdf'
+    'nijdf',
+    5
   ),(
     45,
-    6,
     'fwqwq',
     'zmnyi',
     '+82 10-0000-0000',
     85000,
-    'luoqc'
+    'luoqc',
+    6
   ),(
     46,
-    9,
     'ecvsc',
     'pnhgn',
     '+82 10-0000-0000',
     70000,
-    'uychi'
+    'uychi',
+    9
   ),(
     47,
-    4,
     'jmgfh',
     'jkeqz',
     '+82 10-0000-0000',
     20000,
-    'wgckl'
+    'wgckl',
+    4
   ),(
     48,
-    5,
     'lytde',
     'nsbjp',
     '+82 10-0000-0000',
     35000,
-    'ldcdi'
+    'ldcdi',
+    5
   ),(
     49,
-    3,
     'suqvw',
     'jvmdn',
     '+82 10-0000-0000',
     10000,
-    'jzmfl'
+    'jzmfl',
+    3
   ),(
     50,
-    4,
     'rnomn',
     'scita',
     '+82 10-0000-0000',
     35000,
-    'tglji'
+    'tglji',
+    4
   ),(
     51,
-    3,
     'nbqve',
     'rollw',
     '+82 10-0000-0000',
     20000,
-    'qrsxq'
+    'qrsxq',
+    3
   ),(
     52,
-    4,
     'mdkeg',
     'bgddr',
     '+82 10-0000-0000',
     60000,
-    'qmeos'
+    'qmeos',
+    4
   ),(
     53,
-    9,
     'hqqsh',
     'kxoty',
     '+82 10-0000-0000',
     55000,
-    'uwazo'
+    'uwazo',
+    9
   ),(
     54,
-    2,
     'hsfda',
     'uejqj',
     '+82 10-0000-0000',
     70000,
-    'ebnwk'
+    'ebnwk',
+    2
   ),(
     55,
-    2,
     'lktqh',
     'pkexp',
     '+82 10-0000-0000',
     90000,
-    'kjlto'
+    'kjlto',
+    2
   ),(
     56,
-    6,
     'ctmti',
     'dpxfp',
     '+82 10-0000-0000',
     90000,
-    'mvjue'
+    'mvjue',
+    6
   ),(
     57,
-    8,
     'ywjmi',
     'odlhy',
     '+82 10-0000-0000',
     60000,
-    'fmugj'
+    'fmugj',
+    8
   ),(
     58,
-    1,
     'tlcxf',
     'tkovw',
     '+82 10-0000-0000',
     75000,
-    'ivxgt'
+    'ivxgt',
+    1
   ),(
     59,
-    8,
     'hhnoq',
     'qcwtc',
     '+82 10-0000-0000',
     25000,
-    'caxjc'
+    'caxjc',
+    8
   ),(
     60,
-    3,
     'wvzbf',
     'vdbop',
     '+82 10-0000-0000',
     50000,
-    'bftsl'
+    'bftsl',
+    3
   ),(
     61,
-    10,
     'kvocz',
     'fgurw',
     '+82 10-0000-0000',
     30000,
-    'tstjk'
+    'tstjk',
+    10
   ),(
     62,
-    8,
     'ynjmg',
     'mcsdw',
     '+82 10-0000-0000',
     5000,
-    'ddday'
+    'ddday',
+    8
   ),(
     63,
-    5,
     'xdjih',
     'rrlyd',
     '+82 10-0000-0000',
     65000,
-    'gllxv'
+    'gllxv',
+    5
   ),(
     64,
-    6,
     'bphyn',
     'mxsmw',
     '+82 10-0000-0000',
     35000,
-    'qgoxy'
+    'qgoxy',
+    6
   ),(
     65,
-    6,
     'lovzc',
     'ukvhq',
     '+82 10-0000-0000',
     55000,
-    'dyqcu'
+    'dyqcu',
+    6
   ),(
     66,
-    4,
     'eftbl',
     'obiuy',
     '+82 10-0000-0000',
     25000,
-    'gbkui'
+    'gbkui',
+    4
   ),(
     67,
-    5,
     'wwbyr',
     'okagg',
     '+82 10-0000-0000',
     75000,
-    'zogyk'
+    'zogyk',
+    5
   ),(
     68,
-    2,
     'ykoss',
     'yxpks',
     '+82 10-0000-0000',
     10000,
-    'hypdg'
+    'hypdg',
+    2
   ),(
     69,
-    2,
     'edfst',
     'drjjf',
     '+82 10-0000-0000',
     75000,
-    'ujwcp'
+    'ujwcp',
+    2
   ),(
     70,
-    6,
     'msefr',
     'niodx',
     '+82 10-0000-0000',
     60000,
-    'etmww'
+    'etmww',
+    6
   ),(
     71,
-    9,
     'uupwm',
     'xbkfs',
     '+82 10-0000-0000',
     35000,
-    'xsgtt'
+    'xsgtt',
+    9
   ),(
     72,
-    2,
     'myfer',
     'crcfk',
     '+82 10-0000-0000',
     15000,
-    'ubydl'
+    'ubydl',
+    2
   ),(
     73,
-    7,
     'qoxqq',
     'yfbvt',
     '+82 10-0000-0000',
     95000,
-    'cddvf'
+    'cddvf',
+    7
   ),(
     74,
-    5,
     'kkrrt',
     'wuqjj',
     '+82 10-0000-0000',
     45000,
-    'ltkqc'
+    'ltkqc',
+    5
   ),(
     75,
-    8,
     'gkdpx',
     'xafkp',
     '+82 10-0000-0000',
     35000,
-    'wxwon'
+    'wxwon',
+    8
   ),(
     76,
-    4,
     'ybifq',
     'lojpr',
     '+82 10-0000-0000',
     60000,
-    'fswhr'
+    'fswhr',
+    4
   ),(
     77,
-    5,
     'bkxfi',
     'blbaf',
     '+82 10-0000-0000',
     75000,
-    'mbpra'
+    'mbpra',
+    5
   ),(
     78,
-    8,
     'fjgqi',
     'dclqt',
     '+82 10-0000-0000',
     15000,
-    'sbrin'
+    'sbrin',
+    8
   ),(
     79,
-    5,
     'soviy',
     'aokqm',
     '+82 10-0000-0000',
     60000,
-    'zzeuc'
+    'zzeuc',
+    5
   ),(
     80,
-    3,
     'nklrn',
     'bpknr',
     '+82 10-0000-0000',
     30000,
-    'kbioi'
+    'kbioi',
+    3
   ),(
     81,
-    6,
     'nyvzl',
     'ujtay',
     '+82 10-0000-0000',
     15000,
-    'kftmg'
+    'kftmg',
+    6
   ),(
     82,
-    2,
     'kecmc',
     'aierc',
     '+82 10-0000-0000',
     75000,
-    'lrkjr'
+    'lrkjr',
+    2
   ),(
     83,
-    3,
     'zgrfj',
     'vrpwr',
     '+82 10-0000-0000',
     70000,
-    'qkzuy'
+    'qkzuy',
+    3
   ),(
     84,
-    8,
     'yheji',
     'svfwn',
     '+82 10-0000-0000',
     10000,
-    'jonru'
+    'jonru',
+    8
   ),(
     85,
-    5,
     'xcvap',
     'yjupp',
     '+82 10-0000-0000',
     40000,
-    'mcqkx'
+    'mcqkx',
+    5
   ),(
     86,
-    3,
     'qoemp',
     'xeljm',
     '+82 10-0000-0000',
     90000,
-    'xlbxt'
+    'xlbxt',
+    3
   ),(
     87,
-    8,
     'gvwmg',
     'vzrsg',
     '+82 10-0000-0000',
     75000,
-    'csixp'
+    'csixp',
+    8
   ),(
     88,
-    1,
     'prtsx',
     'bbngi',
     '+82 10-0000-0000',
     10000,
-    'zvune'
+    'zvune',
+    1
   ),(
     89,
-    7,
     'bmvev',
     'emkno',
     '+82 10-0000-0000',
     85000,
-    'byhus'
+    'byhus',
+    7
   ),(
     90,
-    5,
     'qkrlf',
     'xofdk',
     '+82 10-0000-0000',
     10000,
-    'lvast'
+    'lvast',
+    5
   ),(
     91,
-    3,
     'exzos',
     'uzsht',
     '+82 10-0000-0000',
     20000,
-    'bgybv'
+    'bgybv',
+    3
   ),(
     92,
-    8,
     'vekey',
     'uzhvz',
     '+82 10-0000-0000',
     60000,
-    'mtwdx'
+    'mtwdx',
+    8
   ),(
     93,
-    9,
     'byobp',
     'xcsrs',
     '+82 10-0000-0000',
     65000,
-    'cnudg'
+    'cnudg',
+    9
   ),(
     94,
-    3,
     'vqjfa',
     'dhmol',
     '+82 10-0000-0000',
     60000,
-    'pghpp'
+    'pghpp',
+    3
   ),(
     95,
-    8,
     'mgjqi',
     'pcsxn',
     '+82 10-0000-0000',
     95000,
-    'kpuow'
+    'kpuow',
+    8
   ),(
     96,
-    5,
     'ifeog',
     'crrao',
     '+82 10-0000-0000',
     85000,
-    'bmulu'
+    'bmulu',
+    5
   ),(
     97,
-    6,
     'zzcgm',
     'fwksi',
     '+82 10-0000-0000',
     75000,
-    'vdsyy'
+    'vdsyy',
+    6
   ),(
     98,
-    1,
     'rkcgs',
     'mruoh',
     '+82 10-0000-0000',
     60000,
-    'mbfko'
+    'mbfko',
+    1
   ),(
     99,
-    3,
     'ifshn',
     'tphrx',
     '+82 10-0000-0000',
     85000,
-    'bwwjr'
+    'bwwjr',
+    3
   ),(
     100,
-    5,
     'acxyr',
     'dmfmg',
     '+82 10-0000-0000',
     45000,
-    'tkccj'
+    'tkccj',
+    5
   );
