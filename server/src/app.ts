@@ -3,6 +3,8 @@ import { RegisterRoutes } from "./routes/routes";
 import swaggerUI from "swagger-ui-express";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
+import { Target } from "./entity/target";
+import { Donation } from "./entity/donation";
 
 (async () => {
   const port = process.env.PORT || 8000;
@@ -20,7 +22,7 @@ import { createConnection } from "typeorm";
     database: "do_nation",
     synchronize: true,
     logging: false,
-    entities: ["src/entity/**/*.ts"],
+    entities: [Target, Donation],
   });
 
   app.use(
