@@ -21,7 +21,7 @@ import { Donation } from "./entity/donation";
     password: "1234",
     database: "do_nation",
     synchronize: true,
-    logging: false,
+    logging: true,
     entities: [Target, Donation],
   });
 
