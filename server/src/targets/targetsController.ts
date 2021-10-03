@@ -8,7 +8,8 @@ import {
   SuccessResponse,
 } from "tsoa";
 import { Target } from "../entity/target";
-import { TargetsService, TargetCreationParams } from "./targetsService";
+import { TargetCreationDTO } from "./targetsDTO";
+import { TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
@@ -21,7 +22,7 @@ export class TargetsController extends Controller {
   @SuccessResponse("201", "Created") // Custom success response
   @Post()
   public async createTarget(
-    @Body() requestBody: TargetCreationParams
+    @Body() requestBody: TargetCreationDTO
   ): Promise<void> {
     this.setStatus(201); // set return status 201
     new TargetsService().create(requestBody);

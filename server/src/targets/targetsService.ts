@@ -1,16 +1,14 @@
 import { Target } from "../entity/target";
-
-export type TargetCreationParams = Omit<Target, "id">;
+import { TargetCreationDTO } from "./targetsDTO";
 
 export class TargetsService {
   public async get(id: number): Promise<Target | undefined> {
     return await Target.findOne(id);
   }
 
-  public async create(
-    TargetCreationParams: TargetCreationParams
-  ): Promise<Target> {
-    const t = Object.assign(new Target(), TargetCreationParams);
+  public async create(targetCreationDTO: TargetCreationDTO): Promise<Target> {
+    const defaultParams = { isFinished: false };
+    const t = Target.create({ ...defaultParams, ...targetCreationDTO });
     await t.save();
     return t;
   }
