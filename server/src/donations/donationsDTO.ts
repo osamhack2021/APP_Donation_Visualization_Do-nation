@@ -1,4 +1,19 @@
 import { Donation } from "../entity/donation";
+export interface DonationCreationDTO {
+  donor_name: string;
+  message: string;
+  phone: string;
+  pay_won: number;
+  password: string;
+  targetId: number;
+}
+
+export interface DonationDeleteDTO {
+  donor_name: string;
+  phone: string;
+  password: string;
+  targetId: number;
+}
 
 export interface DonationResponseDTO {
   id: number;

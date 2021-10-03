@@ -1,7 +1,10 @@
 import { Donation } from "../entity/donation";
-import { DonationResponseDTO, getDonationResponseDTO } from "./donationsDTO";
-
-export type DonationCreationParams = Omit<Donation, "id">;
+import {
+  DonationCreationDTO,
+  DonationDeleteDTO,
+  DonationResponseDTO,
+  getDonationResponseDTO,
+} from "./donationsDTO";
 
 export class DonationsService {
   public async get(targetId: number): Promise<DonationResponseDTO[]> {
@@ -9,10 +12,19 @@ export class DonationsService {
     return donations.map((d) => getDonationResponseDTO(d));
   }
 
-  public create(donationCreationParams: DonationCreationParams): Donation {
-    return {
-      id: Math.floor(Math.random() * 10000), // Random
-      ...donationCreationParams,
-    };
+  public async create(
+    donationCreationDTO: DonationCreationDTO
+  ): Promise<Donation> {
+    const d = Donation.create(donationCreationDTO);
+    await d.save();
+    return d;
+  }
+
+  public async delete(donationDeleteDTO: DonationDeleteDTO): Promise<void> {
+    const { password, ...deleteCondition } = donationDeleteDTO;
+    const needDelete = await Donation.find({ where: deleteCondition });
+    if (needDelete && needDelete[0].password === password) {
+      await needDelete[0].remove();
+    }
   }
 }

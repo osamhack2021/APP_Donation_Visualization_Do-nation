@@ -23,6 +23,30 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DonationCreationDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "donor_name": {"dataType":"string","required":true},
+            "message": {"dataType":"string","required":true},
+            "phone": {"dataType":"string","required":true},
+            "pay_won": {"dataType":"double","required":true},
+            "password": {"dataType":"string","required":true},
+            "targetId": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DonationDeleteDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "donor_name": {"dataType":"string","required":true},
+            "phone": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
+            "targetId": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Target": {
         "dataType": "refObject",
         "properties": {
@@ -54,34 +78,17 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Donation.Exclude_keyofDonation.id__": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"donor_name":{"dataType":"string","required":true},"message":{"dataType":"string","required":true},"phone":{"dataType":"string","required":true},"pay_won":{"dataType":"double","required":true},"password":{"dataType":"string","required":true},"targetId":{"dataType":"double","required":true},"target":{"ref":"Target","required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Omit_Donation.id_": {
-        "dataType": "refAlias",
-        "type": {"ref":"Pick_Donation.Exclude_keyofDonation.id__","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "DonationCreationParams": {
-        "dataType": "refAlias",
-        "type": {"ref":"Omit_Donation.id_","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Target.Exclude_keyofTarget.id__": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"lat":{"dataType":"double","required":true},"lng":{"dataType":"double","required":true},"objective_won":{"dataType":"double","required":true},"image_url":{"dataType":"string","required":true},"name":{"dataType":"string","required":true},"description":{"dataType":"string","required":true},"isFinished":{"dataType":"boolean","required":true},"donations":{"dataType":"array","array":{"dataType":"refObject","ref":"Donation"},"required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Omit_Target.id_": {
-        "dataType": "refAlias",
-        "type": {"ref":"Pick_Target.Exclude_keyofTarget.id__","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "TargetCreationParams": {
-        "dataType": "refAlias",
-        "type": {"ref":"Omit_Target.id_","validators":{}},
+    "TargetCreationDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "lat": {"dataType":"double","required":true},
+            "lng": {"dataType":"double","required":true},
+            "objective_won": {"dataType":"double","required":true},
+            "image_url": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
@@ -121,7 +128,7 @@ export function RegisterRoutes(app: express.Router) {
 
             function DonationsController_createDonation(request: any, response: any, next: any) {
             const args = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"DonationCreationParams"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"DonationCreationDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -137,6 +144,29 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.createDonation.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/api/v1/donations',
+
+            function DonationsController_deleteDonation(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"DonationDeleteDTO"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DonationsController();
+
+
+            const promise = controller.deleteDonation.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -167,7 +197,7 @@ export function RegisterRoutes(app: express.Router) {
 
             function TargetsController_createTarget(request: any, response: any, next: any) {
             const args = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"TargetCreationParams"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"TargetCreationDTO"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
