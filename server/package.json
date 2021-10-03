@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node  build/src/app.js",
+    "start": "NODE_ENV=production node  build/src/app.js",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\""
   },
   "author": "minjunsz",
