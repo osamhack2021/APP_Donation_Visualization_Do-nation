@@ -8,13 +8,14 @@ import {
   SuccessResponse,
 } from "tsoa";
 import { Target } from "../entity/target";
-import { TargetCreationParams, TargetsService } from "./targetsService";
+import { TargetsService, TargetCreationParams } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
   @Get("{targetId}")
-  public async getUser(@Path() targetId: number): Promise<Target> {
-    return new TargetsService().get(targetId);
+  public async getTarget(@Path() targetId: number): Promise<Target> {
+    const t = await new TargetsService().get(targetId);
+    return t || new Target();
   }
 
   @SuccessResponse("201", "Created") // Custom success response

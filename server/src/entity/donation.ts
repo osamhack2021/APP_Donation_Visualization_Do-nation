@@ -4,6 +4,7 @@ import {
   Column,
   ManyToOne,
   BaseEntity,
+  JoinColumn,
 } from "typeorm";
 import { Target } from "./target";
 
@@ -11,9 +12,6 @@ import { Target } from "./target";
 export class Donation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column("int")
-  target_id: number;
 
   @Column({ length: 100 })
   donor_name: string;
@@ -30,6 +28,10 @@ export class Donation extends BaseEntity {
   @Column()
   password: string;
 
+  @Column({ type: "int" })
+  targetId: number;
+
   @ManyToOne(() => Target, (target) => target.donations)
+  @JoinColumn({ name: "targetId" })
   target: Target;
 }

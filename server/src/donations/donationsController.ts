@@ -7,16 +7,15 @@ import {
   Post,
   SuccessResponse,
 } from "tsoa";
-import {
-  DonationCreationParams,
-  DonationDTO,
-  DonationsService,
-} from "./donationsService";
+import { DonationResponseDTO } from "./donationsDTO";
+import { DonationCreationParams, DonationsService } from "./donationsService";
 
 @Route("donations")
 export class DonationsController extends Controller {
   @Get("{targetId}")
-  public async getUser(@Path() targetId: number): Promise<DonationDTO[]> {
+  public async getUser(
+    @Path() targetId: number
+  ): Promise<DonationResponseDTO[]> {
     return new DonationsService().get(targetId);
   }
 
