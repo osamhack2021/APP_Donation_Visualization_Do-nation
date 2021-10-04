@@ -23,7 +23,12 @@ class DonationListPage extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) => SizedBox(
           height: 150,
-          child: TargetCard(target: example),
+          child: InkWell(
+            onTap: () {
+              print("target clicked");
+            },
+            child: TargetCard(target: example),
+          ),
         ),
       ),
     );
