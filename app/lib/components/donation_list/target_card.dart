@@ -12,27 +12,33 @@ class TargetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Image.asset(target.imageUrl),
-          ),
-          Expanded(
-            flex: 3,
-            child: _TargetDescription(
-              name: target.name,
-              desc: target.desc,
-              progress: target.currentWon / target.objectiveWon,
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black54, width: 3),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Image.asset(target.imageUrl),
             ),
-          ),
-          const Icon(
-            Icons.more_vert,
-            size: 16.0,
-          ),
-        ],
+            Expanded(
+              flex: 3,
+              child: _TargetDescription(
+                name: target.name,
+                desc: target.desc,
+                progress: target.currentWon / target.objectiveWon,
+              ),
+            ),
+            const Icon(
+              Icons.more_vert,
+              size: 16.0,
+            ),
+          ],
+        ),
       ),
     );
   }
