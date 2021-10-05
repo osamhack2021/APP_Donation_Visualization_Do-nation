@@ -1,5 +1,5 @@
-import 'package:app/components/donation_list/target_card.dart';
-import 'package:app/models/target.dart';
+import 'package:app/domain/target/target.dart';
+import 'package:app/view/components/donation_list/target_card.dart';
 import 'package:flutter/material.dart';
 
 class DonationListPage extends StatelessWidget {
