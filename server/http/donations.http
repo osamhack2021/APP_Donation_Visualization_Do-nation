@@ -1,4 +1,8 @@
-GET http://localhost:8000/api/v1/donations/2
+GET http://localhost:8000/api/v1/donations/1000
+
+###
+
+GET http://localhost:8000/api/v1/donations?targetId=1
 
 ###
 
@@ -6,7 +10,7 @@ POST http://localhost:8000/api/v1/donations
 Content-Type: application/json
 
 {
-  "target_id": 1,
+  "targetId": 1,
   "donor_name": "minjun",
   "message": "test message",
   "phone": "+82 10-1111-1111",

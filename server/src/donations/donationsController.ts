@@ -7,6 +7,7 @@ import {
   Post,
   SuccessResponse,
   Delete,
+  Query,
 } from "tsoa";
 import {
   DonationCreationDTO,
@@ -17,11 +18,18 @@ import { DonationsService } from "./donationsService";
 
 @Route("donations")
 export class DonationsController extends Controller {
-  @Get("{targetId}")
-  public async getUser(
-    @Path() targetId: number
+  @Get()
+  public async getDonationsByTargetId(
+    @Query() targetId: number
   ): Promise<DonationResponseDTO[]> {
-    return new DonationsService().get(targetId);
+    return new DonationsService().getByTargetId(targetId);
+  }
+
+  @Get("{id}")
+  public async getDonationById(
+    @Path() id: number
+  ): Promise<DonationResponseDTO> {
+    return new DonationsService().getById(id);
   }
 
   @SuccessResponse("201", "Created") // Custom success response

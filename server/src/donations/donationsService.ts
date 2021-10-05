@@ -7,9 +7,14 @@ import {
 } from "./donationsDTO";
 
 export class DonationsService {
-  public async get(targetId: number): Promise<DonationResponseDTO[]> {
+  public async getByTargetId(targetId: number): Promise<DonationResponseDTO[]> {
     const donations = await Donation.find({ where: { targetId } });
     return donations.map((d) => getDonationResponseDTO(d));
+  }
+
+  public async getById(id: number): Promise<DonationResponseDTO> {
+    const donation = await Donation.findOneOrFail({ where: { id } });
+    return getDonationResponseDTO(donation);
   }
 
   public async create(

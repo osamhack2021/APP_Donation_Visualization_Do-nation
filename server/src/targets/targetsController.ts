@@ -13,6 +13,11 @@ import { TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
+  @Get()
+  public async getAllTarget(): Promise<Target[]> {
+    return new TargetsService().getAll();
+  }
+
   @Get("{targetId}")
   public async getTarget(@Path() targetId: number): Promise<Target> {
     const t = await new TargetsService().get(targetId);

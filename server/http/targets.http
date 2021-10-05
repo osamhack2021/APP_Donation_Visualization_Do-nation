@@ -1,7 +1,7 @@
-GET http://localhost:8000/api/v1/targets/1
-
+GET http://localhost:8000/api/v1/targets/
 ###
-
+GET http://localhost:8000/api/v1/targets/1
+###
 POST http://localhost:8000/api/v1/targets
 Content-Type: application/json
 
