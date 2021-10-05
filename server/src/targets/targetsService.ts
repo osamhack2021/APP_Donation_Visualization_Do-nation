@@ -5,6 +5,9 @@ export class TargetsService {
   public async get(id: number): Promise<Target | undefined> {
     return await Target.findOne(id);
   }
+  public async getAll(): Promise<Target[]> {
+    return await Target.find();
+  }
 
   public async create(targetCreationDTO: TargetCreationDTO): Promise<Target> {
     const defaultParams = { isFinished: false };
