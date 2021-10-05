@@ -1,42 +1,35 @@
-import { Donation } from "./donation";
-
-export type DonationCreationParams = Omit<Donation, "id">;
-export type DonationDTO = Omit<Donation, "password">;
+import { Donation } from "../entity/donation";
+import {
+  DonationCreationDTO,
+  DonationDeleteDTO,
+  DonationResponseDTO,
+  getDonationResponseDTO,
+} from "./donationsDTO";
 
 export class DonationsService {
-  public get(target_id: number): DonationDTO[] {
-    return [
-      {
-        id: 1,
-        target_id,
-        donor_name: "minjun",
-        message: "test donation",
-        phone: "+82 10-0000-0000",
-        pay_won: 5000,
-      },
-      {
-        id: 2,
-        target_id,
-        donor_name: "hanwoo",
-        message: "test donation2",
-        phone: "+82 10-0000-0000",
-        pay_won: 10000,
-      },
-      {
-        id: 3,
-        target_id,
-        donor_name: "test",
-        message: "test donation3",
-        phone: "+82 10-0000-0000",
-        pay_won: 15000,
-      },
-    ];
+  public async getByTargetId(targetId: number): Promise<DonationResponseDTO[]> {
+    const donations = await Donation.find({ where: { targetId } });
+    return donations.map((d) => getDonationResponseDTO(d));
   }
 
-  public create(donationCreationParams: DonationCreationParams): Donation {
-    return {
-      id: Math.floor(Math.random() * 10000), // Random
-      ...donationCreationParams,
-    };
+  public async getById(id: number): Promise<DonationResponseDTO> {
+    const donation = await Donation.findOneOrFail({ where: { id } });
+    return getDonationResponseDTO(donation);
+  }
+
+  public async create(
+    donationCreationDTO: DonationCreationDTO
+  ): Promise<Donation> {
+    const d = Donation.create(donationCreationDTO);
+    await d.save();
+    return d;
+  }
+
+  public async delete(donationDeleteDTO: DonationDeleteDTO): Promise<void> {
+    const { password, ...deleteCondition } = donationDeleteDTO;
+    const needDelete = await Donation.find({ where: deleteCondition });
+    if (needDelete && needDelete[0].password === password) {
+      await needDelete[0].remove();
+    }
   }
 }

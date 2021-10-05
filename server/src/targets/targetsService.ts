@@ -1,24 +1,18 @@
-import { Target } from "./target";
-
-export type TargetCreationParams = Omit<Target, "id">;
+import { Target } from "../entity/target";
+import { TargetCreationDTO } from "./targetsDTO";
 
 export class TargetsService {
-  public get(id: number): Target {
-    return {
-      id,
-      lat: 37.5,
-      lng: 127,
-      objective_won: 500000,
-      image_url: "assets/test_img.jpg",
-      name: "test target",
-      description: "testtesttesttesttesttesttesttesttesttesttesttesttest",
-    };
+  public async get(id: number): Promise<Target | undefined> {
+    return await Target.findOne(id);
+  }
+  public async getAll(): Promise<Target[]> {
+    return await Target.find();
   }
 
-  public create(userCreationParams: TargetCreationParams): Target {
-    return {
-      id: Math.floor(Math.random() * 10000), // Random
-      ...userCreationParams,
-    };
+  public async create(targetCreationDTO: TargetCreationDTO): Promise<Target> {
+    const defaultParams = { isFinished: false };
+    const t = Target.create({ ...defaultParams, ...targetCreationDTO });
+    await t.save();
+    return t;
   }
 }

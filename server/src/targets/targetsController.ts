@@ -7,20 +7,27 @@ import {
   Post,
   SuccessResponse,
 } from "tsoa";
-import { Target } from "./target";
-import { TargetCreationParams, TargetsService } from "./targetsService";
+import { Target } from "../entity/target";
+import { TargetCreationDTO } from "./targetsDTO";
+import { TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
+  @Get()
+  public async getAllTarget(): Promise<Target[]> {
+    return new TargetsService().getAll();
+  }
+
   @Get("{targetId}")
-  public async getUser(@Path() targetId: number): Promise<Target> {
-    return new TargetsService().get(targetId);
+  public async getTarget(@Path() targetId: number): Promise<Target> {
+    const t = await new TargetsService().get(targetId);
+    return t || new Target();
   }
 
   @SuccessResponse("201", "Created") // Custom success response
   @Post()
   public async createTarget(
-    @Body() requestBody: TargetCreationParams
+    @Body() requestBody: TargetCreationDTO
   ): Promise<void> {
     this.setStatus(201); // set return status 201
     new TargetsService().create(requestBody);
