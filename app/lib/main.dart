@@ -11,10 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DonationListPage()
-
-    );
-
+    return MaterialApp(home: DonationListPage());
   }
 }
