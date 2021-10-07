@@ -1,24 +1,28 @@
-const _urlPrefix = "";
-
 class Target {
-  final String imageUrl;
-  final String name;
-  final String desc;
-  final int objectiveWon;
-  final int currentWon;
+  final int? id;
+  final double? lat;
+  final double? lng;
+  final int? objectiveWon;
+  final String? imageUrl;
+  final String? name;
+  final String? desc;
 
-  Target(
-      {required this.imageUrl,
-      required this.name,
-      required this.desc,
-      required this.objectiveWon,
-      required this.currentWon});
+  Target.fromJson(Map<String, dynamic> json)
+      : id = json["id"],
+        lat = json["lat"],
+        lng = json["lng"],
+        objectiveWon = json["objective_won"],
+        imageUrl = json["image_url"],
+        name = json["name"],
+        desc = json["description"];
 }
 
-Target example = Target(
-  imageUrl: "${_urlPrefix}bench.png",
-  name: "53사단 벤치",
-  desc: "53사단 통신대대에서 연병장에 놓을 벤치를 설치하기 위해 모금중입니다!",
-  objectiveWon: 300000,
-  currentWon: 230000,
-);
+Target example = Target.fromJson({
+  "id": 1,
+  "lat": 37.1,
+  "lng": 127.5,
+  "image_url": "bench.png",
+  "name": "53사단 벤치",
+  "desc": "53사단 통신대대에서 연병장에 놓을 벤치를 설치하기 위해 모금중입니다!",
+  "objective_won": 300000,
+});

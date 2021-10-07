@@ -6,6 +6,7 @@ import { createConnection } from "typeorm";
 import { Target } from "./entity/target";
 import { Donation } from "./entity/donation";
 import { PORT, __prod__ } from "./constants";
+import cors from "cors";
 
 (async () => {
   await createConnection({
@@ -21,6 +22,7 @@ import { PORT, __prod__ } from "./constants";
   }).catch((error) => console.error(`connection error: ${error}`));
 
   const app = express();
+  app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(

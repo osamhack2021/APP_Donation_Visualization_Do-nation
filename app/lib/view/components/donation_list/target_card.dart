@@ -23,14 +23,14 @@ class TargetCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Image.asset(target.imageUrl),
+              child: Image.asset("bench.png"),
             ),
             Expanded(
               flex: 3,
               child: _TargetDescription(
-                name: target.name,
-                desc: target.desc,
-                progress: target.currentWon / target.objectiveWon,
+                name: "target.name!",
+                desc: "target.desc!",
+                progress: 0.6,
               ),
             ),
             const Icon(
