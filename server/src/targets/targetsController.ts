@@ -8,13 +8,13 @@ import {
   SuccessResponse,
 } from "tsoa";
 import { Target } from "../entity/target";
-import { TargetCreationDTO } from "./targetsDTO";
+import { TargetCreationDTO, TargetInfoDTO } from "./targetsDTO";
 import { TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
   @Get()
-  public async getAllTarget(): Promise<Target[]> {
+  public async getAllTarget(): Promise<TargetInfoDTO[]> {
     return new TargetsService().getAll();
   }
 

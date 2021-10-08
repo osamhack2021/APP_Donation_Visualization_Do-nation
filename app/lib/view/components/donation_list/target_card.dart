@@ -31,7 +31,7 @@ class TargetCard extends StatelessWidget {
               child: _TargetDescription(
                 name: target.name!,
                 desc: target.desc!,
-                progress: 10000 / target.objectiveWon!,
+                progress: target.currentWon! / target.objectiveWon!,
               ),
             ),
             const Icon(
