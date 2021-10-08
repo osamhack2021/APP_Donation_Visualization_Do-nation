@@ -11,6 +11,7 @@ class TargetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(target.imageUrl);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Container(
@@ -23,14 +24,14 @@ class TargetCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Image.asset("bench.png"),
+              child: Image.asset(target.imageUrl!),
             ),
             Expanded(
               flex: 3,
               child: _TargetDescription(
-                name: "target.name!",
-                desc: "target.desc!",
-                progress: 0.6,
+                name: target.name!,
+                desc: target.desc!,
+                progress: 10000 / target.objectiveWon!,
               ),
             ),
             const Icon(
