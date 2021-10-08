@@ -25,6 +25,8 @@ import cors from "cors";
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+  app.use("/public", express.static("public"));
+  
   app.use(
     "/docs",
     swaggerUI.serve,

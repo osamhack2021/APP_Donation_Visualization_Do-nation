@@ -1,4 +1,5 @@
 import 'package:app/domain/target/target.dart';
+import 'package:app/util/get_server_url.dart';
 import 'package:flutter/material.dart';
 
 class TargetCard extends StatelessWidget {
@@ -11,7 +12,6 @@ class TargetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(target.imageUrl);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Container(
@@ -24,7 +24,7 @@ class TargetCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Image.asset(target.imageUrl!),
+              child: Image.network(getPublicUrl(target.imageUrl!)),
             ),
             Expanded(
               flex: 3,
