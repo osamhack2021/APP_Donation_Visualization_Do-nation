@@ -1,4 +1,4 @@
-const String serverUrl = "https://66e1-20-205-186-233.ngrok.io";
+const String serverUrl = "3.37.235.153:8000";
 const String apiPrefix = "api/v1";
 const String publicPath = "public";
 
