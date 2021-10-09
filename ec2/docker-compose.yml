@@ -12,18 +12,22 @@ services:
       dockerfile: Dockerfile
 
     volumes:
-      - ..:/workspace:cached
+      - /server:/server
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
+    expose:
+      - "8000"
 
   db:
     network_mode: host
-    image: mysql
+    image: quay.io/perriea/alpine-mysql:1.0
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
+    volumes:
+      - ./mysql-init-files/:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: "do_nation"
     expose:
-      # Opens port 3306 on the container
       - "3306"

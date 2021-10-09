@@ -1,5 +1,3 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/codespaces-linux/.devcontainer/base.Dockerfile
-
 FROM mcr.microsoft.com/vscode/devcontainers/universal:1-focal
 
 USER root
@@ -22,7 +20,7 @@ ENV ANDROID_SDK_ROOT /home/codespace/opt/android-sdk
 ENV PATH $PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
 ENV PATH $PATH:$ANDROID_SDK_ROOT/platform-tools
 
-RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "platform-tools" "platforms;android-30" "build-tools;30.0.3" && \
+RUN yes | sdkmanager --licenses && \
+    sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "platform-tools" "platforms;android-30" "build-tools;30.0.3" && \
     flutter config --android-sdk $ANDROID_SDK_ROOT && \
     flutter precache 
-
