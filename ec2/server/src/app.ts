@@ -7,6 +7,8 @@ import { Target } from "./entity/target";
 import { Donation } from "./entity/donation";
 import { PORT, __prod__ } from "./constants";
 import cors from "cors";
+import morgan from "morgan";
+import path from "path";
 
 (async () => {
   await createConnection({
@@ -22,10 +24,11 @@ import cors from "cors";
   }).catch((error) => console.error(`connection error: ${error}`));
 
   const app = express();
+  app.use(morgan("short"));
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use("/public", express.static("public"));
+  app.use("/public", express.static(path.join(process.cwd(),"public")));
   
   app.use(
     "/docs",
