@@ -8,6 +8,7 @@ import { Donation } from "./entity/donation";
 import { PORT, __prod__ } from "./constants";
 import cors from "cors";
 import morgan from "morgan";
+import path from "path";
 
 (async () => {
   await createConnection({
@@ -27,7 +28,7 @@ import morgan from "morgan";
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use("/public", express.static("public"));
+  app.use("/public", express.static(path.join(process.cwd(),"public")));
   
   app.use(
     "/docs",
