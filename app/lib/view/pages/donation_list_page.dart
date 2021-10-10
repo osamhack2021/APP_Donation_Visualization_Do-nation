@@ -25,7 +25,10 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  Get.to(() => DonationDetailPage());
+                  Get.to(
+                    () => DonationDetailPage(),
+                    arguments: targetController.targets[index],
+                  );
                 },
                 child: TargetCard(target: targetController.targets[index]),
               ),
