@@ -11,9 +11,7 @@ class TargetController extends GetxController {
   }
 
   void fetchTarget() async {
-    // ignore: unused_local_variable
     List<Target> targetList = await TargetRepository().getAllTargets();
     targets.value = targetList;
-    //ProductServices is a Separate class from where I am fetching the API
   }
 }
