@@ -8,7 +8,7 @@ export class TargetsService {
   public async getAll(): Promise<TargetInfoDTO[]> {
     const targets = await Target.find({ relations: ["donations"] });
     const targetInfos = targets.map((t) => ({
-      id: 1,
+      id: t.id,
       name: t.name,
       description: t.description,
       lat: t.lat,
