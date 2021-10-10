@@ -25,7 +25,8 @@ class FinishedListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  Get.to(() => FinishedDetailPage());
+                  Get.to(() => FinishedDetailPage(),
+                      arguments: {"id": targetController.targets[index].id});
                 },
                 child: FinishedCard(target: targetController.targets[index]),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FinishedDetailPage extends StatelessWidget {
   const FinishedDetailPage({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class FinishedDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Finished Detail'),
       ),
-      body: SizedBox(),
+      body: Text("${Get.arguments["id"]}"),
     );
   }
 }
