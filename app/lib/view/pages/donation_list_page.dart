@@ -1,5 +1,6 @@
 import 'package:app/controller/target_controller.dart';
 import 'package:app/view/components/donation_list/target_card.dart';
+import 'package:app/view/pages/donation_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +25,7 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  print(targetController.targets.length);
+                  Get.to(() => DonationDetailPage());
                 },
                 child: TargetCard(target: targetController.targets[index]),
               ),

@@ -1,9 +1,10 @@
 import 'package:app/controller/target_controller.dart';
 import 'package:app/view/components/finished_list/finished_card.dart';
+import 'package:app/view/pages/finished_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DonationListPage extends StatelessWidget {
+class FinishedListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
 
   @override
@@ -24,7 +25,7 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  print(targetController.targets.length);
+                  Get.to(() => FinishedDetailPage());
                 },
                 child: FinishedCard(target: targetController.targets[index]),
               ),
