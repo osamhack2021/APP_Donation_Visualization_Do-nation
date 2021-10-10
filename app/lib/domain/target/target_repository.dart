@@ -9,7 +9,8 @@ class TargetRepository {
 
   Future<List<Target>> getAllTargets() async {
     Response response = await _targetProvider.getAllTargets();
-    List<Map<String, dynamic>> list = convertUtf8ToObjec(response.body);
-    return list.map((t) => Target.fromJson(t)).toList();
+    List<dynamic> list = convertUtf8ToObject(response.body);
+    var returned = list.map((t) => Target.fromJson(t)).toList();
+    return returned;
   }
 }
