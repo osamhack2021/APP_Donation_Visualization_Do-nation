@@ -1,4 +1,7 @@
+import 'package:app/view/pages/donation_list_page.dart';
+import 'package:app/view/pages/finished_list_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -26,10 +29,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                   child: const Text('장병들에게 기부하기!'),
                   onPressed: () {
-                    //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => Myapp())
-                    // );
+                    Get.to(() => DonationListPage());
                   },
                 ),
               ),
@@ -38,7 +38,9 @@ class HomePage extends StatelessWidget {
                 width: double.maxFinite,
                 child: ElevatedButton(
                   child: const Text('기부 완료 목록 확인하기'),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => FinishedListPage());
+                  },
                 ),
               )
             ]));

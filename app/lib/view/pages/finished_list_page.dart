@@ -1,10 +1,10 @@
 import 'package:app/controller/target_controller.dart';
-import 'package:app/view/components/donation_list/target_card.dart';
-import 'package:app/view/pages/donation_detail_page.dart';
+import 'package:app/view/components/finished_list/finished_card.dart';
+import 'package:app/view/pages/finished_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DonationListPage extends StatelessWidget {
+class FinishedListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
 
   @override
@@ -25,9 +25,10 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  Get.to(() => DonationDetailPage());
+                  Get.to(() => FinishedDetailPage(),
+                      arguments: {"id": targetController.targets[index].id});
                 },
-                child: TargetCard(target: targetController.targets[index]),
+                child: FinishedCard(target: targetController.targets[index]),
               ),
             ),
           ),
