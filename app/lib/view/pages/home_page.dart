@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Image.asset(
-                '/workspaces/APP_Donation_Visualization_Do-nation/assets/img.jpeg',
+                'assets/img.jpeg',
                 width: 600,
                 height: 300,
                 fit: BoxFit.cover,
