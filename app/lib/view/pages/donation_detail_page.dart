@@ -1,3 +1,4 @@
+import 'package:app/controller/dto/donation_creation_dto.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/view/components/donation_detail/donation_dialog.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,14 @@ class DonationDetailPage extends StatelessWidget {
       ),
       body: ElevatedButton(
         onPressed: () async {
-          bool result = await Get.defaultDialog(
+          dynamic result = await Get.defaultDialog(
             title: "기부 참가하기",
             content: const DonationDialog(),
           );
-          print(result);
+          if (result["done"]) {
+            final creationDTO = (result["dto"] as DonationCreationDTO);
+            creationDTO.targetId = target.id!;
+          }
         },
         child: Text('${target.name}에게 기부하기'),
       ),
