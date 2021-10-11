@@ -2,6 +2,8 @@ import 'package:app/controller/donation_controller.dart';
 import 'package:app/controller/dto/donation_creation_dto.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/view/components/donation_detail/donation_dialog.dart';
+import 'package:app/view/components/donation_detail/make_donation_button.dart';
+import 'package:app/view/components/donation_detail/target_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,11 +24,18 @@ class DonationDetailPage extends StatelessWidget {
           height: double.infinity,
           child: Column(
             children: [
+              // Top section
               Container(
-                height: 100.0,
                 color: Colors.teal,
-              ), // some top content
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TargetInfo(
+                    target: target,
+                  ),
+                ),
+              ),
 
+              // Scrollable section
               Expanded(
                 child: Center(
                   child: ListView(
@@ -35,6 +44,7 @@ class DonationDetailPage extends StatelessWidget {
                 ),
               ),
 
+              // Bottom section
               Container(
                 color: Colors.lightGreen,
                 child: Padding(
@@ -42,13 +52,14 @@ class DonationDetailPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      _MakeDonationButton(
-                          target: target,
-                          donationController: donationController),
+                      MakeDonationButton(
+                        target: target,
+                        donationController: donationController,
+                      ),
                     ],
                   ),
                 ),
-              ), // some bottom content
+              ),
             ],
           ),
         ),
@@ -57,34 +68,7 @@ class DonationDetailPage extends StatelessWidget {
   }
 }
 
-class _MakeDonationButton extends StatelessWidget {
-  const _MakeDonationButton({
-    Key? key,
-    required this.target,
-    required this.donationController,
-  }) : super(key: key);
 
-  final Target target;
-  final DonationController donationController;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () async {
-        dynamic result = await Get.defaultDialog(
-          title: "기부 참가하기",
-          content: const DonationDialog(),
-        );
-        if (result["done"]) {
-          final creationDTO = (result["dto"] as DonationCreationDTO);
-          creationDTO.targetId = target.id!;
-          donationController.save(creationDTO);
-        }
-      },
-      child: Text('${target.name}에게 기부하기'),
-    );
-  }
-}
 
 
 /*Column(
