@@ -11,6 +11,13 @@ class DonationController extends GetxController {
     await _donationRepository.save(dto);
   }
 
+  Future<List<Donation>> findByTargetId(int targetId) async {
+    List<Donation> donations =
+        await _donationRepository.findByTargetId(targetId);
+    this.donations.value = donations;
+    return donations;
+  }
+
 /*  Future<void> deleteById(int id) async {
     int result = await _postRepository.deleteById(id);
     if (result == 1) {

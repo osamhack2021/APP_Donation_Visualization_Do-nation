@@ -15,6 +15,15 @@ class DonationRepository {
     return donation;
   }
 
+  Future<List<Donation>> findByTargetId(int targetId) async {
+    Response response = await _donationProvider.findByTargetId(targetId);
+    dynamic body = response.body;
+    List<dynamic> convertBody = convertUtf8ToObject(body);
+    List<Donation> donations =
+        convertBody.map((donation) => Donation.fromJson(donation)).toList();
+    return donations;
+  }
+
 /** Future<int> deleteById(int id) async {
     Response response = await _postProvider.deleteById(id);
     dynamic body = response.body;
