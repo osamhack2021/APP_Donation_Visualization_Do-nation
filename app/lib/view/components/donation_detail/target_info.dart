@@ -67,11 +67,6 @@ class _TargetDescription extends StatelessWidget {
             desc,
             style: const TextStyle(fontSize: 12.0),
           ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-          Text(
-            "$objectiveWon원 중 $currentWon원 모금완료! (${(currentWon / objectiveWon * 100).toStringAsFixed(1)}%)",
-            style: const TextStyle(fontSize: 14.0),
-          ),
         ],
       ),
     );

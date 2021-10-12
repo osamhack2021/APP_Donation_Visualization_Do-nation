@@ -29,7 +29,7 @@ class MakeDonationButton extends StatelessWidget {
           donationController.save(creationDTO);
         }
       },
-      child: Text('${target.name}에 기부하기'),
+      child: const Text('기부하기'),
     );
   }
 }

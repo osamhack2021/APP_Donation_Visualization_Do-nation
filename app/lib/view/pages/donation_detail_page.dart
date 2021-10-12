@@ -1,10 +1,10 @@
 import 'package:app/controller/donation_controller.dart';
-import 'package:app/controller/dto/donation_creation_dto.dart';
 import 'package:app/domain/target/target.dart';
-import 'package:app/view/components/donation_detail/donation_dialog.dart';
+import 'package:app/view/components/donation_detail/donation_data_row.dart';
 import 'package:app/view/components/donation_detail/make_donation_button.dart';
 import 'package:app/view/components/donation_detail/target_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class DonationDetailPage extends StatelessWidget {
@@ -37,9 +37,26 @@ class DonationDetailPage extends StatelessWidget {
 
               // Scrollable section
               Expanded(
-                child: Center(
-                  child: ListView(
-                    children: [], //your list view content here
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minWidth: MediaQuery.of(context).size.width * 0.9,
+                      ),
+                      child: Obx(() => DataTable(
+                            columnSpacing: 10.0,
+                            columns: const [
+                              DataColumn(label: Text("기부자")),
+                              DataColumn(label: Text("기부 메시지")),
+                              DataColumn(label: Text("기부금"), numeric: true),
+                            ],
+                            rows: donationController.donations
+                                .map((d) => createDonationDataRow(d))
+                                .toList(),
+                          )),
+                    ),
                   ),
                 ),
               ),
@@ -50,8 +67,12 @@ class DonationDetailPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text(
+                        "${target.objectiveWon}원 중 ${target.currentWon}원 모금완료! (${(target.currentWon! / target.objectiveWon! * 100).toStringAsFixed(1)}%)",
+                        style: const TextStyle(fontSize: 12.0),
+                      ),
                       MakeDonationButton(
                         target: target,
                         donationController: donationController,
