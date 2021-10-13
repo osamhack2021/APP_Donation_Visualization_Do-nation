@@ -5,6 +5,11 @@
       "cwd": ".",
       "script": "npm",
       "args": "start"
+    },
+    {
+      "name": "ngrok",
+      "script": "ngrok",
+      "args": "http 8000"
     }
   ]
 }
