@@ -1,4 +1,5 @@
 import 'package:app/controller/dto/donation_creation_dto.dart';
+import 'package:app/controller/dto/donation_delete_dto.dart';
 import 'package:app/domain/donation/donation.dart';
 import 'package:app/domain/donation/donation_repository.dart';
 import 'package:get/get.dart';
@@ -11,18 +12,21 @@ class DonationController extends GetxController {
     await _donationRepository.save(dto);
   }
 
-/*  Future<void> deleteById(int id) async {
-    int result = await _postRepository.deleteById(id);
-    if (result == 1) {
-      print("서버 쪽 삭제 성공");
-      List<Post> result = donations.where((post) => post.id != id).toList();
-      //print(result.length);
-      donations.value = result;
-    }
+  Future<List<Donation>> findByTargetId(int targetId) async {
+    List<Donation> donations =
+        await _donationRepository.findByTargetId(targetId);
+    this.donations.value = donations;
+    return donations;
   }
-  Future<List<Post>> findAll() async {
-    List<Post> posts = await _postRepository.findAll();
-    this.donations.value = posts;
-    return posts;
-  }*/
+
+  Future<void> deleteDonation(int donationId, DonationDeleteDTO dto) async {
+    await _donationRepository.deleteDonation(dto);
+    await findByTargetId(dto.targetId);
+    // if (true) {
+    //   print("서버 쪽 삭제 성공");
+    //   List<Donation> result =
+    //       donations.where((donation) => donation.id != donationId).toList();
+    //   donations.value = result;
+    // }
+  }
 }

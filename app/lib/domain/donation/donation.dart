@@ -16,8 +16,8 @@ class Donation {
 
   Donation.fromJson(Map<String, dynamic> json)
       : id = json["id"],
-        donorName = json["title"],
-        message = json["content"],
+        donorName = json["donor_name"],
+        message = json["message"],
         payWon = json["pay_won"],
         targetId = json["targetId"];
 }

@@ -1,3 +1,4 @@
+import 'package:app/controller/donation_controller.dart';
 import 'package:app/controller/target_controller.dart';
 import 'package:app/view/components/donation_list/target_card.dart';
 import 'package:app/view/pages/donation_detail_page.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 
 class DonationListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
+  final donationController = Get.put(DonationController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,8 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
+                  donationController
+                      .findByTargetId(targetController.targets[index].id!);
                   Get.to(
                     () => DonationDetailPage(),
                     arguments: targetController.targets[index],
