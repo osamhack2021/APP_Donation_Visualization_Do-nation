@@ -9,7 +9,10 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class DonationDetailPage extends StatelessWidget {
-  DonationDetailPage({Key? key}) : super(key: key);
+  DonationDetailPage({Key? key}) : super(key: key) {
+    donationController.findByTargetId(target.id!);
+  }
+
   final target = Get.arguments as Target;
   final donationController = Get.put(DonationController());
 

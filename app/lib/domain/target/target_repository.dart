@@ -7,8 +7,8 @@ import 'target.dart';
 class TargetRepository {
   final TargetProvider _targetProvider = TargetProvider();
 
-  Future<List<Target>> getAllTargets() async {
-    Response response = await _targetProvider.getAllTargets();
+  Future<List<Target>> getAllTargets(bool isFinished) async {
+    Response response = await _targetProvider.getAllTargets(isFinished);
     List<dynamic> list = convertUtf8ToObject(response.body);
     var returned = list.map((t) => Target.fromJson(t)).toList();
     return returned;

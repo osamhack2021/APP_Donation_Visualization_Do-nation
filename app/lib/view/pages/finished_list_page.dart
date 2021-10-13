@@ -7,11 +7,15 @@ import 'package:get/get.dart';
 class FinishedListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
 
+  FinishedListPage({Key? key}): super(key: key) {
+    targetController.fetchTarget(isFinished: true); 
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           appBar: AppBar(
-            title: const Text('국군 장병 기부 장려 프로그램.'),
+            title: const Text('모금 완료 상품'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {

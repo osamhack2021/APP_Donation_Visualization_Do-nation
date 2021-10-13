@@ -1,4 +1,3 @@
-import 'package:app/controller/donation_controller.dart';
 import 'package:app/controller/target_controller.dart';
 import 'package:app/view/components/donation_list/target_card.dart';
 import 'package:app/view/pages/donation_detail_page.dart';
@@ -7,13 +6,16 @@ import 'package:get/get.dart';
 
 class DonationListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
-  final donationController = Get.put(DonationController());
+
+  DonationListPage({Key? key}) : super(key: key) {
+    targetController.fetchTarget(isFinished: false);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           appBar: AppBar(
-            title: const Text('국군 장병 기부 장려 프로그램.'),
+            title: const Text('모금 중인 상품'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -27,8 +29,6 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  donationController
-                      .findByTargetId(targetController.targets[index].id!);
                   Get.to(
                     () => DonationDetailPage(),
                     arguments: targetController.targets[index],
