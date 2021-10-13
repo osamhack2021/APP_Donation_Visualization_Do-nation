@@ -7,6 +7,7 @@ import {
   Post,
   SuccessResponse,
   Query,
+  Response
 } from "tsoa";
 import { Target } from "../entity/target";
 import { TargetCreationDTO, TargetInfoDTO } from "./targetsDTO";
@@ -14,11 +15,18 @@ import { TargetsService } from "./targetsService";
 
 @Route("targets")
 export class TargetsController extends Controller {
+  @SuccessResponse("200")
   @Get()
   public async getAllTarget(
     @Query() isFinished?: boolean
   ): Promise<TargetInfoDTO[]> {
-    return new TargetsService().getAll(isFinished);
+    const targets = await new TargetsService().getAll(isFinished);
+    if(targets.length === 0){
+      this.setStatus(204);
+    } else{
+      this.setStatus(200);
+    }
+    return targets;
   }
 
   @Get("{targetId}")
