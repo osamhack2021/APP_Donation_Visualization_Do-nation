@@ -1,5 +1,5 @@
 import 'package:app/domain/donation/donation.dart';
-import 'package:app/util/format_currency.dart';
+import 'package:app/util/formatters.dart';
 import 'package:flutter/material.dart';
 
 DataRow createDonationDataRow(Donation donation) {

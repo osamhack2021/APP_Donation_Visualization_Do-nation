@@ -1,6 +1,8 @@
 import 'package:app/controller/dto/donation_creation_dto.dart';
-import 'package:app/util/get_server_url.dart';
+import 'package:app/util/formatters.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 import 'package:get/get.dart';
 
 class DonationDialog extends StatefulWidget {
@@ -15,8 +17,13 @@ class _DonationDialogState extends State<DonationDialog> {
   String donorName = "";
   String message = "";
   String phone = "";
-  int payWon = 0;
   String password = "";
+
+  final payWonFormatter = CurrencyTextInputFormatter(
+    locale: 'ko',
+    decimalDigits: 0,
+    symbol: '\u{20A9}',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +71,15 @@ class _DonationDialogState extends State<DonationDialog> {
               TextFormField(
                 keyboardType: TextInputType.phone,
                 autofocus: false,
+                inputFormatters: [
+                  LibPhonenumberTextFormatter(
+                    country: krPhoneCode,
+                    inputContainsCountryCode: true,
+                    additionalDigits: 3,
+                  ),
+                ],
                 decoration: InputDecoration(
-                  hintText: '전화번호',
+                  hintText: krPhoneCode.exampleNumberMobileInternational,
                   contentPadding:
                       const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   border: OutlineInputBorder(
@@ -76,8 +90,9 @@ class _DonationDialogState extends State<DonationDialog> {
                 },
               ),
               const SizedBox(height: 20.0),
-              TextFormField(
+              TextField(
                 keyboardType: TextInputType.number,
+                inputFormatters: [payWonFormatter],
                 autofocus: false,
                 decoration: InputDecoration(
                   hintText: '기부 금액',
@@ -86,11 +101,6 @@ class _DonationDialogState extends State<DonationDialog> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32.0)),
                 ),
-                onSaved: (String? value) {
-                  if (value != null) {
-                    payWon = int.parse(value);
-                  }
-                },
               ),
               const SizedBox(height: 20.0),
               TextFormField(
@@ -148,7 +158,7 @@ class _DonationDialogState extends State<DonationDialog> {
       donorName: donorName,
       message: message,
       phone: phone,
-      payWon: payWon,
+      payWon: payWonFormatter.getUnformattedValue().toInt(),
       password: password,
     );
   }
