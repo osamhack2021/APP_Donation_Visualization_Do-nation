@@ -1,4 +1,5 @@
 import 'package:app/controller/dto/donation_creation_dto.dart';
+import 'package:app/controller/dto/donation_delete_dto.dart';
 import 'package:app/domain/donation/donation.dart';
 import 'package:app/domain/donation/donation_provider.dart';
 import 'package:app/util/convert_utf8.dart';
@@ -24,14 +25,10 @@ class DonationRepository {
     return donations;
   }
 
-/** Future<int> deleteById(int id) async {
-    Response response = await _postProvider.deleteById(id);
-    dynamic body = response.body;
-    dynamic convertBody = convertUtf8ToObject(body);
-    CMRespDto cmRespDto = CMRespDto.fromJson(convertBody);
-
-    return cmRespDto.code ?? -1;
-  }*/
+  Future<void> deleteDonation(DonationDeleteDTO deleteDTO) async {
+    Response response =
+        await _donationProvider.deleteDonation(deleteDTO.toJson());
+  }
 
   /*Future<Post> findById(int id) async {
     Response response = await _postProvider.findById(id);

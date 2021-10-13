@@ -6,4 +6,7 @@ class DonationProvider extends GetConnect {
       get(getAPIUrl("donations?targetId=$targetId"));
 
   Future<Response> save(Map data) => post(getAPIUrl("donations/"), data);
+
+  Future<Response> deleteDonation(Map data) =>
+      request(getAPIUrl("donations/"), 'DELETE', body: data);
 }
