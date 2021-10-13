@@ -4,14 +4,10 @@ import 'package:get/state_manager.dart';
 
 class TargetController extends GetxController {
   final targets = <Target>[].obs;
-  @override
-  void onInit() {
-    fetchTarget();
-    super.onInit();
-  }
 
-  void fetchTarget() async {
-    List<Target> targetList = await TargetRepository().getAllTargets();
+  void fetchTarget({required bool isFinished}) async {
+    List<Target> targetList =
+        await TargetRepository().getAllTargets(isFinished);
     targets.value = targetList;
   }
 }

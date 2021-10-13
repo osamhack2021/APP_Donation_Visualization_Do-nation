@@ -7,7 +7,10 @@ import 'package:get/get.dart';
 
 class DonationListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
-  final donationController = Get.put(DonationController());
+
+  DonationListPage({Key? key}) : super(key: key) {
+    targetController.fetchTarget(isFinished: false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +30,6 @@ class DonationListPage extends StatelessWidget {
               height: 150,
               child: InkWell(
                 onTap: () {
-                  donationController
-                      .findByTargetId(targetController.targets[index].id!);
                   Get.to(
                     () => DonationDetailPage(),
                     arguments: targetController.targets[index],
