@@ -16,7 +16,7 @@ import { TargetsService } from "./targetsService";
 export class TargetsController extends Controller {
   @Get()
   public async getAllTarget(
-    @Query() isFinished: boolean | undefined
+    @Query() isFinished?: boolean
   ): Promise<TargetInfoDTO[]> {
     return new TargetsService().getAll(isFinished);
   }
