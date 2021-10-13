@@ -6,6 +6,7 @@ import {
   Path,
   Post,
   SuccessResponse,
+  Query,
 } from "tsoa";
 import { Target } from "../entity/target";
 import { TargetCreationDTO, TargetInfoDTO } from "./targetsDTO";
@@ -14,8 +15,10 @@ import { TargetsService } from "./targetsService";
 @Route("targets")
 export class TargetsController extends Controller {
   @Get()
-  public async getAllTarget(): Promise<TargetInfoDTO[]> {
-    return new TargetsService().getAll();
+  public async getAllTarget(
+    @Query() isFinished: boolean | undefined
+  ): Promise<TargetInfoDTO[]> {
+    return new TargetsService().getAll(isFinished);
   }
 
   @Get("{targetId}")
