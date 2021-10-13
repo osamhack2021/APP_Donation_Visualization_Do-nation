@@ -5,8 +5,11 @@ export class TargetsService {
   public async get(id: number): Promise<Target | undefined> {
     return await Target.findOne(id, { relations: ["donations"] });
   }
-  public async getAll(): Promise<TargetInfoDTO[]> {
-    const targets = await Target.find({ relations: ["donations"] });
+  public async getAll(isFinished?: boolean): Promise<TargetInfoDTO[]> {
+    const targets = await Target.find({
+      where: { isFinished },
+      relations: ["donations"],
+    });
     const targetInfos = targets.map((t) => ({
       id: t.id,
       name: t.name,
