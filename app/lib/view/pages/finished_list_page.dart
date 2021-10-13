@@ -15,7 +15,7 @@ class FinishedListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           appBar: AppBar(
-            title: const Text('국군 장병 기부 장려 프로그램.'),
+            title: const Text('모금 완료 상품'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {

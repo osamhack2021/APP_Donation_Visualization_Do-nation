@@ -1,4 +1,3 @@
-import 'package:app/controller/donation_controller.dart';
 import 'package:app/controller/target_controller.dart';
 import 'package:app/view/components/donation_list/target_card.dart';
 import 'package:app/view/pages/donation_detail_page.dart';
@@ -16,7 +15,7 @@ class DonationListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           appBar: AppBar(
-            title: const Text('국군 장병 기부 장려 프로그램.'),
+            title: const Text('모금 중인 상품'),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
