@@ -20,6 +20,13 @@ DataRow createDonationDataRow(Donation donation) {
       DataCell(
         Text(formatCurrency(donation.payWon!, symbol: '\u{20A9}')),
       ),
+      DataCell(IconButton(
+        icon: const Icon(Icons.delete),
+        color: Colors.deepOrange,
+        onPressed: () {
+          print('delete!');
+        },
+      )),
     ],
   );
 }

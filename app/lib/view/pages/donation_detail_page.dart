@@ -52,6 +52,7 @@ class DonationDetailPage extends StatelessWidget {
                               DataColumn(label: Text("기부자")),
                               DataColumn(label: Text("기부 메시지")),
                               DataColumn(label: Text("기부금"), numeric: true),
+                              DataColumn(label: Text("")),
                             ],
                             rows: donationController.donations
                                 .map((d) => createDonationDataRow(d))
