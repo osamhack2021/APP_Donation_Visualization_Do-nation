@@ -1,7 +1,7 @@
 import 'package:app/controller/donation_controller.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/get_server_url.dart';
-import 'package:app/view/components/donation_detail/donation_data_row.dart';
+import 'package:app/view/components/common/donation_data_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
