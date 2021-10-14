@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 class FinishedListPage extends StatelessWidget {
   final TargetController targetController = Get.put(TargetController());
 
-  FinishedListPage({Key? key}): super(key: key) {
-    targetController.fetchTarget(isFinished: true); 
+  FinishedListPage({Key? key}) : super(key: key) {
+    targetController.fetchTarget(isFinished: true);
   }
 
   @override
@@ -30,7 +30,7 @@ class FinishedListPage extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Get.to(() => FinishedDetailPage(),
-                      arguments: {"id": targetController.targets[index].id});
+                      arguments: targetController.targets[index]);
                 },
                 child: FinishedCard(target: targetController.targets[index]),
               ),
