@@ -6,7 +6,7 @@ import 'package:app/view/components/donation_detail/donation_delete_dialog.dart'
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-DataRow createDonationDataRow(Donation donation) {
+DataRow createDonationDataRow(Donation donation, bool isFinished) {
   final donationController = Get.put(DonationController());
 
   return DataRow(
@@ -26,20 +26,22 @@ DataRow createDonationDataRow(Donation donation) {
       DataCell(
         Text(formatCurrency(donation.payWon!, symbol: '\u{20A9}')),
       ),
-      DataCell(IconButton(
-        icon: const Icon(Icons.delete),
-        color: Colors.deepOrange,
-        onPressed: () async {
-          dynamic result = await Get.defaultDialog(
-            title: "기부 취소",
-            content: DonationDeleteDialog(targetId: donation.targetId!),
-          );
-          if (result["done"]) {
-            final deleteDTO = (result["dto"] as DonationDeleteDTO);
-            donationController.deleteDonation(donation.id!, deleteDTO);
-          }
-        },
-      )),
+      if (!isFinished) ...[
+        DataCell(IconButton(
+          icon: const Icon(Icons.delete),
+          color: Colors.deepOrange,
+          onPressed: () async {
+            dynamic result = await Get.defaultDialog(
+              title: "기부 취소",
+              content: DonationDeleteDialog(targetId: donation.targetId!),
+            );
+            if (result["done"]) {
+              final deleteDTO = (result["dto"] as DonationDeleteDTO);
+              donationController.deleteDonation(donation.id!, deleteDTO);
+            }
+          },
+        )),
+      ]
     ],
   );
 }

@@ -15,6 +15,7 @@ class DonationDetailPage extends StatelessWidget {
 
   final target = Get.arguments as Target;
   final donationController = Get.put(DonationController());
+  final isFinished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,8 @@ class DonationDetailPage extends StatelessWidget {
                               DataColumn(label: Text("")),
                             ],
                             rows: donationController.donations
-                                .map((d) => createDonationDataRow(d))
+                                .map(
+                                    (d) => createDonationDataRow(d, isFinished))
                                 .toList(),
                           )),
                     ),
