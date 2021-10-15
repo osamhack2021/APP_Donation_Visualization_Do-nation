@@ -1,12 +1,10 @@
-import 'dart:async';
-
+import 'package:app/view/components/common/drawing.dart';
 import 'package:app/controller/donation_controller.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/get_server_url.dart';
 import 'package:app/util/responsive_size.dart';
 import 'package:app/view/components/common/donation_data_row.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/painting/image_decoder.dart';
 import 'package:get/get.dart';
 import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
@@ -64,6 +62,8 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                       ? const CircularProgressIndicator()
                       : CustomPaint(
                           painter: ImagePainter(image!),
+                          foregroundPainter: const OverlayBoxPainter(
+                              0.1, 0.1, 0.5, 0.7, 0xaaff7f00),
                         ),
                 ),
               ),
@@ -109,45 +109,6 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
         ),
       ),
     );
-  }
-}
-
-class ImagePainter extends CustomPainter {
-  final ui.Image image;
-
-  const ImagePainter(this.image);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint();
-    final outerBox = Rect.fromLTWH(0, 0, size.width, size.height);
-    var outerBoxPaint = Paint()
-      ..color = Color(0xff995588)
-      ..style = PaintingStyle.fill;
-    canvas.drawRect(outerBox, outerBoxPaint);
-    paintImage(image, outerBox, canvas, paint, BoxFit.scaleDown);
-
-    final overlapBox = Offset(size.width * 0.2, size.height * 0.5) &
-        Size(size.width * 0.1, size.height * 0.5);
-    var overlapBoxPaint = Paint()
-      ..color = Color(0xaaffffff)
-      ..style = PaintingStyle.fill;
-    canvas.drawRect(overlapBox, overlapBoxPaint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
-
-  void paintImage(
-      ui.Image image, Rect outputRect, Canvas canvas, Paint paint, BoxFit fit) {
-    final Size imageSize =
-        Size(image.width.toDouble(), image.height.toDouble());
-    final FittedSizes sizes = applyBoxFit(fit, imageSize, outputRect.size);
-    final Rect inputSubrect =
-        Alignment.center.inscribe(sizes.source, Offset.zero & imageSize);
-    final Rect outputSubrect =
-        Alignment.center.inscribe(sizes.destination, outputRect);
-    canvas.drawImageRect(image, inputSubrect, outputSubrect, paint);
   }
 }
 
