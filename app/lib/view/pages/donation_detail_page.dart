@@ -1,7 +1,7 @@
 import 'package:app/controller/donation_controller.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/formatters.dart';
-import 'package:app/view/components/donation_detail/donation_data_row.dart';
+import 'package:app/view/components/common/donation_data_row.dart';
 import 'package:app/view/components/donation_detail/make_donation_button.dart';
 import 'package:app/view/components/donation_detail/target_info.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,7 @@ class DonationDetailPage extends StatelessWidget {
 
   final target = Get.arguments as Target;
   final donationController = Get.put(DonationController());
+  final isFinished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,8 @@ class DonationDetailPage extends StatelessWidget {
                               DataColumn(label: Text("")),
                             ],
                             rows: donationController.donations
-                                .map((d) => createDonationDataRow(d))
+                                .map(
+                                    (d) => createDonationDataRow(d, isFinished))
                                 .toList(),
                           )),
                     ),
