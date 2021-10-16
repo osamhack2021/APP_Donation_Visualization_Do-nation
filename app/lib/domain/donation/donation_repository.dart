@@ -3,7 +3,6 @@ import 'package:app/controller/dto/donation_delete_dto.dart';
 import 'package:app/domain/donation/donation.dart';
 import 'package:app/domain/donation/donation_provider.dart';
 import 'package:app/util/convert_utf8.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class DonationRepository {
