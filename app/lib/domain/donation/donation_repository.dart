@@ -4,29 +4,28 @@ import 'package:app/domain/donation/donation.dart';
 import 'package:app/domain/donation/donation_provider.dart';
 import 'package:app/util/convert_utf8.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class DonationRepository {
   final DonationProvider _donationProvider = DonationProvider();
 
   Future<Donation> save(DonationCreationDTO creationDTO) async {
-    Response response = await _donationProvider.save(creationDTO.toJson());
-    dynamic body = response.body;
-    dynamic convertBody = convertUtf8ToObject(body);
+    http.Response response = await _donationProvider.save(creationDTO.toJson());
+    dynamic convertBody = convertUtf8ToObject(response);
     Donation donation = Donation.fromJson(convertBody);
     return donation;
   }
 
   Future<List<Donation>> findByTargetId(int targetId) async {
-    Response response = await _donationProvider.findByTargetId(targetId);
-    dynamic body = response.body;
-    List<dynamic> convertBody = convertUtf8ToObject(body);
+    http.Response response = await _donationProvider.findByTargetId(targetId);
+    List<dynamic> convertBody = convertUtf8ToObject(response);
     List<Donation> donations =
         convertBody.map((donation) => Donation.fromJson(donation)).toList();
     return donations;
   }
 
   Future<void> deleteDonation(DonationDeleteDTO deleteDTO) async {
-    Response response =
+    http.Response response =
         await _donationProvider.deleteDonation(deleteDTO.toJson());
   }
 
