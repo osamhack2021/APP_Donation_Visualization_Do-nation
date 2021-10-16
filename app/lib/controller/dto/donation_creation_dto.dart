@@ -18,8 +18,8 @@ class DonationCreationDTO {
         "donor_name": donorName,
         "message": message,
         "phone": phone,
-        "pay_won": payWon,
+        "pay_won": payWon.toString(),
         "password": password,
-        "targetId": targetId,
+        "targetId": targetId.toString(),
       };
 }
