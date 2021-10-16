@@ -28,14 +28,14 @@ export class Donation extends BaseEntity {
   @Column()
   password: string;
 
-  @Column()
+  @Column("float")
   x1_coord: number;
-  @Column()
+  @Column("float")
   y1_coord: number;
 
-  @Column()
+  @Column("float")
   x2_coord: number;
-  @Column()
+  @Column("float")
   y2_coord: number;
 
   @Column({ type: "int" })
