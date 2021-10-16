@@ -21,6 +21,10 @@ export interface DonationResponseDTO {
   message: string;
   pay_won: number;
   targetId: number;
+  x1_coord: number;
+  y1_coord: number;
+  x2_coord: number;
+  y2_coord: number;
 }
 
 export const getDonationResponseDTO = (
@@ -32,12 +36,20 @@ export const getDonationResponseDTO = (
     message,
     pay_won,
     targetId,
+    x1_coord,
+    y1_coord,
+    x2_coord,
+    y2_coord,
   }: Donation) => ({
     id,
     donor_name,
     message,
     pay_won,
     targetId,
+    x1_coord,
+    y1_coord,
+    x2_coord,
+    y2_coord,
   });
   return unwrap(donation);
 };
