@@ -1,4 +1,5 @@
 import 'package:app/controller/donation_controller.dart';
+import 'package:app/domain/donation/donation.dart';
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/formatters.dart';
 import 'package:app/view/components/common/donation_data_row.dart';
@@ -51,6 +52,7 @@ class DonationDetailPage extends StatelessWidget {
                         minWidth: MediaQuery.of(context).size.width * 0.9,
                       ),
                       child: Obx(() => DataTable(
+                            showCheckboxColumn: false,
                             columnSpacing: 10.0,
                             columns: const [
                               DataColumn(label: Text("기부자")),
@@ -59,8 +61,8 @@ class DonationDetailPage extends StatelessWidget {
                               DataColumn(label: Text("")),
                             ],
                             rows: donationController.donations
-                                .map(
-                                    (d) => createDonationDataRow(d, isFinished))
+                                .map((d) => createDonationDataRow(
+                                    d, isFinished, (Donation _) {}))
                                 .toList(),
                           )),
                     ),
