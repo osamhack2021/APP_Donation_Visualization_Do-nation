@@ -1,6 +1,8 @@
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/get_server_url.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class TargetCard extends StatelessWidget {
   const TargetCard({
@@ -28,11 +30,7 @@ class TargetCard extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: _TargetDescription(
-                name: target.name!,
-                desc: target.desc!,
-                progress: target.currentWon! / target.objectiveWon!,
-              ),
+              child: _TargetDescription(target: target),
             ),
             const Icon(
               Icons.more_vert,
@@ -48,37 +46,60 @@ class TargetCard extends StatelessWidget {
 class _TargetDescription extends StatelessWidget {
   const _TargetDescription({
     Key? key,
-    required this.name,
-    required this.desc,
-    required this.progress,
+    required this.target,
   }) : super(key: key);
 
-  final String name;
-  final String desc;
-  final double progress;
+  final Target target;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(5.0, 5.0, 0.0, 5.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            name,
+            target.name!,
             style: Theme.of(context).textTheme.headline2,
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
           Text(
-            desc,
+            target.desc!,
             style: Theme.of(context).textTheme.bodyText1,
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-          LinearProgressIndicator(
-            value: progress,
-            semanticsLabel: "Donation Progress Indicator",
-          ),
+          SfLinearGauge(
+            minimum: 0,
+            maximum: target.objectiveWon!.toDouble(),
+            showTicks: false,
+            showLabels: false,
+            barPointers: [
+              LinearBarPointer(value: target.currentWon!.toDouble())
+            ],
+            markerPointers: target.goals
+                .map(
+                  (g) => LinearWidgetPointer(
+                    value: g.objectiveWon!.toDouble(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(
+                          CupertinoIcons.arrowtriangle_up_fill,
+                          size: 10.0,
+                        ),
+                        Text(
+                          g.goal!,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ],
+                    ),
+                    position: LinearElementPosition.inside,
+                  ),
+                )
+                .toList(),
+          )
         ],
       ),
     );

@@ -7,6 +7,7 @@ import {
 } from "typeorm";
 import { Donation } from "./donation";
 import { Feedback } from "./feedback";
+import { Goal } from "./goal";
 
 @Entity()
 export class Target extends BaseEntity {
@@ -39,4 +40,7 @@ export class Target extends BaseEntity {
 
   @OneToMany(() => Feedback, (feedback) => feedback.target)
   feedbacks: Feedback[];
+
+  @OneToMany(() => Goal, (goal) => goal.target)
+  goals: Goal[];
 }

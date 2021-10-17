@@ -10,6 +10,7 @@ import cors from "cors";
 import morgan from "morgan";
 import path from "path";
 import { Feedback } from "./entity/feedback";
+import { Goal } from "./entity/goal";
 
 (async () => {
   await createConnection({
@@ -21,7 +22,7 @@ import { Feedback } from "./entity/feedback";
     database: "do_nation",
     synchronize: !__prod__,
     logging: !__prod__,
-    entities: [Target, Donation, Feedback],
+    entities: [Target, Donation, Feedback, Goal],
   }).catch((error) => console.error(`connection error: ${error}`));
 
   const app = express();

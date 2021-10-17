@@ -8,7 +8,7 @@ export class TargetsService {
   public async getAll(isFinished?: boolean): Promise<TargetInfoDTO[]> {
     const targets = await Target.find({
       where: { isFinished },
-      relations: ["donations"],
+      relations: ["donations", "goals"],
     });
     const targetInfos = targets.map((t) => ({
       id: t.id,
@@ -23,6 +23,7 @@ export class TargetsService {
         (prev, current) => prev + current.pay_won,
         0
       ),
+      goals: t.goals,
     }));
     return targetInfos;
   }
