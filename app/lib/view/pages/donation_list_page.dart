@@ -28,17 +28,14 @@ class DonationListPage extends StatelessWidget {
           ),
           body: ListView.builder(
             itemCount: targetController.targets.length,
-            itemBuilder: (context, index) => SizedBox(
-              height: 150,
-              child: InkWell(
-                onTap: () {
-                  Get.to(
-                    () => DonationDetailPage(),
-                    arguments: targetController.targets[index],
-                  );
-                },
-                child: TargetCard(target: targetController.targets[index]),
-              ),
+            itemBuilder: (context, index) => InkWell(
+              onTap: () {
+                Get.to(
+                  () => DonationDetailPage(),
+                  arguments: targetController.targets[index],
+                );
+              },
+              child: TargetCard(target: targetController.targets[index]),
             ),
           ),
         ));
