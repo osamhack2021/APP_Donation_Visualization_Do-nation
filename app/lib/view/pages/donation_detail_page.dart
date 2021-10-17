@@ -22,7 +22,10 @@ class DonationDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Donation Detail'),
+        title: Text(
+          'Donation Detail',
+          style: Theme.of(context).textTheme.headline1,
+        ),
       ),
       body: Container(
         color: Colors.amber,
@@ -54,15 +57,29 @@ class DonationDetailPage extends StatelessWidget {
                       child: Obx(() => DataTable(
                             showCheckboxColumn: false,
                             columnSpacing: 10.0,
-                            columns: const [
-                              DataColumn(label: Text("기부자")),
-                              DataColumn(label: Text("기부 메시지")),
-                              DataColumn(label: Text("기부금"), numeric: true),
-                              DataColumn(label: Text("")),
+                            columns: [
+                              DataColumn(
+                                  label: Text(
+                                "기부자",
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                "기부 메시지",
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                    "기부금",
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                  numeric: true),
+                              const DataColumn(label: Text("")),
                             ],
                             rows: donationController.donations
                                 .map((d) => createDonationDataRow(
-                                    d, isFinished, (Donation _) {}))
+                                    d, isFinished, (Donation _) {}, context))
                                 .toList(),
                           )),
                     ),
@@ -80,7 +97,10 @@ class DonationDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         "${formatCurrency(target.objectiveWon!)}원 중 ${formatCurrency(target.currentWon!)}원 모금완료! (${(target.currentWon! / target.objectiveWon! * 100).toStringAsFixed(1)}%)",
-                        style: const TextStyle(fontSize: 13.0),
+                        style: (Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(fontSize: 12.0)),
                       ),
                       MakeDonationButton(
                         target: target,
