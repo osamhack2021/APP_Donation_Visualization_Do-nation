@@ -1,5 +1,6 @@
 import 'package:app/domain/target/target.dart';
 import 'package:app/util/get_server_url.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -84,8 +85,14 @@ class _TargetDescription extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.arrow_drop_up_sharp),
-                        Text(g.goal!),
+                        const Icon(
+                          CupertinoIcons.arrowtriangle_up_fill,
+                          size: 10.0,
+                        ),
+                        Text(
+                          g.goal!,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
                       ],
                     ),
                     position: LinearElementPosition.inside,
