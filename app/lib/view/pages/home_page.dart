@@ -12,7 +12,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('국군 장병 기부 장려 프로그램'),
+          title: Text(
+            '국군 장병 기부 장려 프로그램',
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -27,7 +30,10 @@ class HomePage extends StatelessWidget {
                 height: 48,
                 width: double.maxFinite,
                 child: ElevatedButton(
-                  child: const Text('장병들에게 기부하기!'),
+                  child: Text(
+                    '장병들에게 기부하기!',
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
                   onPressed: () {
                     Get.to(() => DonationListPage());
                   },
@@ -37,7 +43,8 @@ class HomePage extends StatelessWidget {
                 height: 48,
                 width: double.maxFinite,
                 child: ElevatedButton(
-                  child: const Text('기부 완료 목록 확인하기'),
+                  child: Text('기부 완료 목록 확인하기',
+                      style: Theme.of(context).textTheme.headline2),
                   onPressed: () {
                     Get.to(() => FinishedListPage());
                   },

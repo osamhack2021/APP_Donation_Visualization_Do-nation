@@ -49,7 +49,10 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Donation Detail'),
+        title: Text(
+          widget.target.name!,
+          style: Theme.of(context).textTheme.headline1,
+        ),
       ),
       body: Container(
         color: Colors.amber,
@@ -93,13 +96,8 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                       children: [
                         ExpansionPanel(
                           headerBuilder: (BuildContext context, bool isOpened) {
-                            return Text(
-                              '기본 정보',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: screenWidth(context) * (16 / 360),
-                                  color: Colors.black),
-                            );
+                            return Text('기본 정보',
+                                style: Theme.of(context).textTheme.headline2);
                           },
                           body: DonationLists(
                             targetId: widget.target.id!,
@@ -147,13 +145,24 @@ class DonationLists extends StatelessWidget {
         child: Obx(() => DataTable(
               showCheckboxColumn: false,
               columnSpacing: 10.0,
-              columns: const [
-                DataColumn(label: Text("기부자")),
-                DataColumn(label: Text("기부 메시지")),
-                DataColumn(label: Text("기부금"), numeric: true),
+              columns: [
+                DataColumn(
+                  label:
+                      Text("기부자", style: Theme.of(context).textTheme.bodyText1),
+                ),
+                DataColumn(
+                  label: Text("기부 메시지",
+                      style: Theme.of(context).textTheme.bodyText1),
+                ),
+                DataColumn(
+                  label:
+                      Text("기부금", style: Theme.of(context).textTheme.bodyText1),
+                  numeric: true,
+                ),
               ],
               rows: donationCont.donations
-                  .map((d) => createDonationDataRow(d, isFinished, onPressed))
+                  .map((d) =>
+                      createDonationDataRow(d, isFinished, onPressed, context))
                   .toList(),
             )),
       ),

@@ -7,7 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 DataRow createDonationDataRow(
-    Donation donation, bool isFinished, void Function(Donation) onPressed) {
+  Donation donation,
+  bool isFinished,
+  void Function(Donation) onPressed,
+  BuildContext context,
+) {
   final donationController = Get.put(DonationController());
 
   return DataRow(
@@ -15,17 +19,28 @@ DataRow createDonationDataRow(
         DataCell(
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 80), //SET max width
-            child: Text(donation.donorName!, overflow: TextOverflow.ellipsis),
+            child: Text(
+              donation.donorName!,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
         ),
         DataCell(
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 150), //SET max width
-            child: Text(donation.message!, overflow: TextOverflow.ellipsis),
+            child: Text(
+              donation.message!,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
         ),
         DataCell(
-          Text(formatCurrency(donation.payWon!, symbol: '\u{20A9}')),
+          Text(
+            formatCurrency(donation.payWon!, symbol: '\u{20A9}'),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
         ),
         if (!isFinished) ...[
           DataCell(IconButton(

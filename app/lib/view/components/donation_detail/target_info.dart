@@ -57,15 +57,12 @@ class _TargetDescription extends StatelessWidget {
         children: <Widget>[
           Text(
             name,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 18.0,
-            ),
+            style: Theme.of(context).textTheme.headline2,
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
           Text(
             desc,
-            style: const TextStyle(fontSize: 12.0),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ],
       ),
