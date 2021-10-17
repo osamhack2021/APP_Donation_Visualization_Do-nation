@@ -9,6 +9,7 @@ import { PORT, __prod__ } from "./constants";
 import cors from "cors";
 import morgan from "morgan";
 import path from "path";
+import { Feedback } from "./entity/feedback";
 
 (async () => {
   await createConnection({
@@ -20,7 +21,7 @@ import path from "path";
     database: "do_nation",
     synchronize: !__prod__,
     logging: !__prod__,
-    entities: [Target, Donation],
+    entities: [Target, Donation, Feedback],
   }).catch((error) => console.error(`connection error: ${error}`));
 
   const app = express();
@@ -28,8 +29,8 @@ import path from "path";
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use("/public", express.static(path.join(process.cwd(),"public")));
-  
+  app.use("/public", express.static(path.join(process.cwd(), "public")));
+
   app.use(
     "/docs",
     swaggerUI.serve,

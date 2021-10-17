@@ -1,0 +1,23 @@
+GET http://3.37.235.153:8000/api/v1/feedbacks?targetId=1
+###
+GET http://3.37.235.153:8000/api/v1/feedbacks?targetId=2
+###
+POST http://3.37.235.153:8000/api/v1/feedbacks
+Content-Type: application/json
+
+{
+  "targetId": 2,
+  "name": "박민준",
+  "message": "내가 기부해서 만드니까 더 뿌듯하네",
+  "password": "1234"
+}
+
+###
+
+DELETE http://3.37.235.153:8000/api/v1/feedbacks
+Content-Type: application/json
+
+{
+  "id": 3,
+  "password": "1234"
+}

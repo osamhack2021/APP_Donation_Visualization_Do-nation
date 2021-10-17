@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Donation } from "./donation";
+import { Feedback } from "./feedback";
 
 @Entity()
 export class Target extends BaseEntity {
@@ -35,4 +36,7 @@ export class Target extends BaseEntity {
 
   @OneToMany(() => Donation, (donation) => donation.target)
   donations: Donation[];
+
+  @OneToMany(() => Feedback, (feedback) => feedback.target)
+  feedbacks: Feedback[];
 }
