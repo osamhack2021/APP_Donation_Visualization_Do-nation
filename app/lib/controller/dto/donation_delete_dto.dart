@@ -15,6 +15,6 @@ class DonationDeleteDTO {
         "donor_name": donorName,
         "phone": phone,
         "password": password,
-        "targetId": targetId,
+        "targetId": targetId.toString(),
       };
 }

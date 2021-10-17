@@ -18,8 +18,12 @@ CREATE TABLE `donation` (
   `phone` varchar(255) NOT NULL,
   `pay_won` int NOT NULL,
   `password` varchar(255) NOT NULL,
-  `targetId` int DEFAULT NULL,
+  `targetId` int NOT NULL,
+  `x1_coord` float NOT NULL,
+  `y1_coord` float NOT NULL,
+  `x2_coord` float NOT NULL,
+  `y2_coord` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_e4d196fad5b527519f8a579d2e6` (`targetId`),
   CONSTRAINT `FK_e4d196fad5b527519f8a579d2e6` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 101 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 118 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;

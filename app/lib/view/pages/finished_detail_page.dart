@@ -1,3 +1,4 @@
+import 'package:app/domain/donation/donation.dart';
 import 'package:app/view/components/common/drawing.dart';
 import 'package:app/controller/donation_controller.dart';
 import 'package:app/domain/target/target.dart';
@@ -10,12 +11,7 @@ import 'dart:ui' as ui;
 import 'package:http/http.dart' as http;
 
 class FinishedDetailPage extends StatefulWidget {
-  FinishedDetailPage({Key? key}) : super(key: key) {
-    donationController.findByTargetId(target.id!);
-  }
-
   final target = Get.arguments as Target;
-  final donationController = Get.put(DonationController());
 
   @override
   State<FinishedDetailPage> createState() => _FinishedDetailPageState();
@@ -24,6 +20,7 @@ class FinishedDetailPage extends StatefulWidget {
 class _FinishedDetailPageState extends State<FinishedDetailPage> {
   bool expanded = false;
   ui.Image? image;
+  Donation selectedDonation = Donation();
 
   @override
   void initState() {
@@ -36,6 +33,16 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
     http.Response response = await http.get(url);
     final image = await decodeImageFromList(response.bodyBytes);
     setState(() => this.image = image);
+  }
+
+  void changeDonation(Donation pressedDonation) {
+    setState(() {
+      if (pressedDonation.id == selectedDonation.id) {
+        selectedDonation = Donation();
+      } else {
+        selectedDonation = pressedDonation;
+      }
+    });
   }
 
   @override
@@ -62,8 +69,11 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                       ? const CircularProgressIndicator()
                       : CustomPaint(
                           painter: ImagePainter(image!),
-                          foregroundPainter: const OverlayBoxPainter(
-                              0.1, 0.1, 0.5, 0.7, 0xaaff7f00),
+                          foregroundPainter: OverlayBoxPainter(
+                            selectedDonation.p1,
+                            selectedDonation.p2,
+                            0xaaff7f00,
+                          ),
                         ),
                 ),
               ),
@@ -75,7 +85,6 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                   child: ExpansionPanelList(
                       animationDuration: const Duration(milliseconds: 500),
                       expandedHeaderPadding: const EdgeInsets.all(10),
-                      // elevation: 4,
                       expansionCallback: (int index, bool isExpanded) {
                         setState(() {
                           expanded = !isExpanded;
@@ -93,7 +102,8 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                             );
                           },
                           body: DonationLists(
-                            donationController: widget.donationController,
+                            targetId: widget.target.id!,
+                            onPressed: changeDonation,
                           ),
                           isExpanded: expanded,
                           canTapOnHeader: true,
@@ -113,13 +123,18 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
 }
 
 class DonationLists extends StatelessWidget {
-  const DonationLists({
+  DonationLists({
     Key? key,
-    required this.donationController,
-  }) : super(key: key);
+    required this.targetId,
+    required this.onPressed,
+  }) : super(key: key) {
+    donationCont.findByTargetId(targetId);
+  }
 
-  final DonationController donationController;
+  final DonationController donationCont = Get.put(DonationController());
   final isFinished = true;
+  final int targetId;
+  final void Function(Donation) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -130,14 +145,15 @@ class DonationLists extends StatelessWidget {
           minWidth: MediaQuery.of(context).size.width * 0.9,
         ),
         child: Obx(() => DataTable(
+              showCheckboxColumn: false,
               columnSpacing: 10.0,
               columns: const [
                 DataColumn(label: Text("기부자")),
                 DataColumn(label: Text("기부 메시지")),
                 DataColumn(label: Text("기부금"), numeric: true),
               ],
-              rows: donationController.donations
-                  .map((d) => createDonationDataRow(d, isFinished))
+              rows: donationCont.donations
+                  .map((d) => createDonationDataRow(d, isFinished, onPressed))
                   .toList(),
             )),
       ),

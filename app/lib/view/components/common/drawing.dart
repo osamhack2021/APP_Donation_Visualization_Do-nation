@@ -13,7 +13,11 @@ class ImagePainter extends CustomPainter {
     final paint = Paint();
     final outerBox = const ui.Offset(0, 0) &
         Size(size.width, size.height); //box with full size
-    paintImageWithBoxfit(image, outerBox, canvas, paint, BoxFit.scaleDown);
+    final backGroundPaint = Paint()
+      ..color = const Color(0xaa123456)
+      ..style = PaintingStyle.fill;
+    canvas.drawRect(outerBox, backGroundPaint);
+    paintImageWithBoxfit(image, outerBox, canvas, paint, BoxFit.fill);
   }
 
   @override
@@ -53,35 +57,47 @@ class ImagePainter extends CustomPainter {
 }
 
 class OverlayBoxPainter extends CustomPainter {
-  final double x1Coord;
-  final double y1Coord;
-  final double x2Coord;
-  final double y2Coord;
+  final CustomPoint p1;
+  final CustomPoint p2;
   final int color;
 
   const OverlayBoxPainter(
-    this.x1Coord,
-    this.y1Coord,
-    this.x2Coord,
-    this.y2Coord,
+    this.p1,
+    this.p2,
     this.color,
   );
 
   @override
   void paint(Canvas canvas, Size size) {
-    final overlapBox = Rect.fromPoints(
-      getOffset(x1Coord, y1Coord, size),
-      getOffset(x2Coord, y2Coord, size),
-    );
+    final outerBox = const ui.Offset(0, 0) & Size(size.width, size.height);
+    final backGroundPaint = Paint()
+      ..color = const Color(0xaa333333)
+      ..style = PaintingStyle.fill;
+    // canvas.drawRect(outerBox, backGroundPaint);
     var overlapBoxPaint = Paint()
       ..color = Color(color)
       ..style = PaintingStyle.fill;
-    canvas.drawRect(overlapBox, overlapBoxPaint);
+    canvas.drawRect(getHighlightBox(size), overlapBoxPaint);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 
-  ui.Offset getOffset(double x, double y, Size size) =>
-      Offset(size.width * x, size.height * y);
+  Rect getHighlightBox(Size size) {
+    print(p1.x);
+    print(p1.y);
+    final _p1 = Offset(size.width * p1.x, size.height * p1.y);
+    final _p2 = Offset(size.width * p2.x, size.height * p2.y);
+    // final _p1 = Offset(size.width * 48, size.height * 21);
+    // final _p2 = Offset(size.width * 578, size.height * 42);
+    final newHighlightBox = Rect.fromPoints(_p1, _p2);
+    return newHighlightBox;
+  }
+}
+
+class CustomPoint {
+  final double x;
+  final double y;
+
+  CustomPoint(this.x, this.y);
 }
