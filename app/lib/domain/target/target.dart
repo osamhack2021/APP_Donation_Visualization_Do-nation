@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:app/domain/goal/goal.dart';
+
 class Target {
   final int? id;
   final double? lat;
@@ -7,6 +11,7 @@ class Target {
   final String? imageUrl;
   final String? name;
   final String? desc;
+  final List<Goal> goals;
 
   Target.fromJson(Map<String, dynamic> json)
       : id = json["id"],
@@ -16,7 +21,12 @@ class Target {
         currentWon = json["current_won"],
         imageUrl = json["image_url"],
         name = json["name"],
-        desc = json["description"];
+        desc = json["description"],
+        goals = decodeGoals(json["goals"]);
+
+  static List<Goal> decodeGoals(List<dynamic> json) {
+    return json.map((g) => Goal.fromJson(g)).toList();
+  }
 }
 
 Target example = Target.fromJson({
