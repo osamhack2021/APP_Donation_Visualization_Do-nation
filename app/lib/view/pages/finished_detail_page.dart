@@ -1,3 +1,4 @@
+import 'package:app/controller/feedback_controller.dart';
 import 'package:app/domain/donation/donation.dart';
 import 'package:app/view/components/common/drawing.dart';
 import 'package:app/controller/donation_controller.dart';
@@ -5,6 +6,8 @@ import 'package:app/domain/target/target.dart';
 import 'package:app/util/get_server_url.dart';
 import 'package:app/util/responsive_size.dart';
 import 'package:app/view/components/common/donation_data_row.dart';
+import 'package:app/view/components/common/feedback_data_row.dart';
+import 'package:app/view/components/finished_detail/make_feedback_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:ui' as ui;
@@ -18,7 +21,7 @@ class FinishedDetailPage extends StatefulWidget {
 }
 
 class _FinishedDetailPageState extends State<FinishedDetailPage> {
-  bool expanded = false;
+  List<bool> expanded = [false, false];
   ui.Image? image;
   Donation selectedDonation = Donation();
 
@@ -90,20 +93,37 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
                       expandedHeaderPadding: const EdgeInsets.all(10),
                       expansionCallback: (int index, bool isExpanded) {
                         setState(() {
-                          expanded = !isExpanded;
+                          expanded.asMap().forEach((i, value) {
+                            if (i == index) {
+                              expanded[i] = !isExpanded;
+                            } else {
+                              expanded[i] = false;
+                            }
+                          });
                         });
                       },
                       children: [
                         ExpansionPanel(
                           headerBuilder: (BuildContext context, bool isOpened) {
-                            return Text('기본 정보',
+                            return Text('기부 정보',
                                 style: Theme.of(context).textTheme.headline2);
                           },
                           body: DonationLists(
                             targetId: widget.target.id!,
                             onPressed: changeDonation,
                           ),
-                          isExpanded: expanded,
+                          isExpanded: expanded[0],
+                          canTapOnHeader: true,
+                        ),
+                        ExpansionPanel(
+                          headerBuilder: (BuildContext context, bool isOpened) {
+                            return Text('피드백',
+                                style: Theme.of(context).textTheme.headline2);
+                          },
+                          body: FeedbackLists(
+                            targetId: widget.target.id!,
+                          ),
+                          isExpanded: expanded[1],
                           canTapOnHeader: true,
                         )
                       ]),
@@ -111,7 +131,24 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
               ),
 
               // Bottom section
-              Container(),
+              Container(
+                color: Colors.lightGreen,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "여러분의 감사 인사를 남겨주세요!",
+                        style: (Theme.of(context).textTheme.bodyText1!),
+                      ),
+                      MakeFeedbackButton(
+                        target: widget.target,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -163,6 +200,50 @@ class DonationLists extends StatelessWidget {
               rows: donationCont.donations
                   .map((d) =>
                       createDonationDataRow(d, isFinished, onPressed, context))
+                  .toList(),
+            )),
+      ),
+    );
+  }
+}
+
+class FeedbackLists extends StatelessWidget {
+  FeedbackLists({
+    Key? key,
+    required this.targetId,
+  }) : super(key: key) {
+    feedbackCont.findByTargetId(targetId);
+  }
+
+  final FeedbackController feedbackCont = Get.put(FeedbackController());
+  final int targetId;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: MediaQuery.of(context).size.width * 0.9,
+        ),
+        child: Obx(() => DataTable(
+              showCheckboxColumn: false,
+              columnSpacing: 10.0,
+              columns: [
+                DataColumn(
+                  label:
+                      Text("사용자", style: Theme.of(context).textTheme.bodyText1),
+                ),
+                DataColumn(
+                  label:
+                      Text("피드백", style: Theme.of(context).textTheme.bodyText1),
+                ),
+                const DataColumn(
+                  label: Text(""),
+                ),
+              ],
+              rows: feedbackCont.feedbacks
+                  .map((f) => createFeedbackDataRow(f, targetId, context))
                   .toList(),
             )),
       ),
