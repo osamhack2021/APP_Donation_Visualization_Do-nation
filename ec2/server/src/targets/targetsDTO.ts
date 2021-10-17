@@ -1,3 +1,5 @@
+import { Goal } from "../entity/goal";
+
 export interface TargetCreationDTO {
   lat: number;
   lng: number;
@@ -17,4 +19,5 @@ export interface TargetInfoDTO {
   name: string;
   description: string;
   isFinished: boolean;
+  goals: Goal[];
 }
