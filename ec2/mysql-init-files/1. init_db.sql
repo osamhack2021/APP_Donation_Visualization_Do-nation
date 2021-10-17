@@ -27,3 +27,12 @@ CREATE TABLE `donation` (
   KEY `FK_e4d196fad5b527519f8a579d2e6` (`targetId`),
   CONSTRAINT `FK_e4d196fad5b527519f8a579d2e6` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 118 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+CREATE TABLE `goal` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `goal` varchar(100) NOT NULL,
+  `objective_won` int NOT NULL,
+  `targetId` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_25132c1c9253c64722630f5ccdc` (`targetId`),
+  CONSTRAINT `FK_25132c1c9253c64722630f5ccdc` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
