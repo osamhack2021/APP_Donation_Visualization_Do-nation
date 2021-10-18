@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
           AspectRatio(
             aspectRatio: 4 / 3,
             child: Image.asset(
-              'assets/img.jpeg',
+              'assets/main_img.jpg',
               width: double.infinity,
               fit: BoxFit.fill,
             ),
