@@ -45,7 +45,8 @@ DataRow createDonationDataRow(
         if (!isFinished) ...[
           DataCell(IconButton(
             icon: const Icon(Icons.delete),
-            color: Colors.deepOrange,
+            // color: Colors.deepOrange,
+            color: Colors.grey,
             onPressed: () async {
               dynamic result = await Get.defaultDialog(
                 title: "기부 취소",

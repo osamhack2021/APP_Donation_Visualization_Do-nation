@@ -57,7 +57,8 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
-      body: SizedBox(
+      body: Container(
+        color: Color(0xffffeed5).withOpacity(0.2),
         height: double.infinity,
         child: Column(
           children: [
@@ -139,7 +140,7 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
 
             // Bottom section
             Container(
-              color: Colors.lightGreen,
+              color: Color(0xffabcae8),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
