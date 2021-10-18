@@ -11,5 +11,5 @@ CREATE TABLE `goal` (
   PRIMARY KEY (`id`),
   KEY `FK_25132c1c9253c64722630f5ccdc` (`targetId`),
   CONSTRAINT `FK_25132c1c9253c64722630f5ccdc` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
-INSERT INTO goal(id,goal,objective_won,targetId) VALUES(1,'goal1',50000,1),(2,'goal2',150000,1);
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+INSERT INTO goal(id,goal,objective_won,targetId) VALUES(5,'냉동치킨',250000,3),(6,'닭강정',600000,3),(7,'핫팩',40000,1),(8,'군고구마',100000,1);
