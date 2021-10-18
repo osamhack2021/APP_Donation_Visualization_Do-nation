@@ -24,7 +24,10 @@ class FinishedCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 2,
-              child: Image.network(getPublicUrl(target.imageUrl!)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(getPublicUrl(target.imageUrl!)),
+              ),
             ),
             Expanded(
               flex: 3,
