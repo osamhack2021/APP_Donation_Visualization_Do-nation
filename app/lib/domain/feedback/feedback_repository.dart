@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 class FeedbackRepository {
   final FeedbackProvider _feedbackProvider = FeedbackProvider();
 
-  Future<Feedback> save(FeedbackCreationDTO creationDTO) async {
+  Future<void> save(FeedbackCreationDTO creationDTO) async {
     http.Response response = await _feedbackProvider.save(creationDTO.toJson());
-    dynamic convertBody = convertUtf8ToObject(response);
-    Feedback feedback = Feedback.fromJson(convertBody);
-    return feedback;
+    // dynamic convertBody = convertUtf8ToObject(response);
+    // Feedback feedback = Feedback.fromJson(convertBody);
+    return;
   }
 
   Future<List<Feedback>> findByTargetId(int targetId) async {

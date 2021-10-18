@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 class DonationRepository {
   final DonationProvider _donationProvider = DonationProvider();
 
-  Future<Donation> save(DonationCreationDTO creationDTO) async {
+  Future<void> save(DonationCreationDTO creationDTO) async {
     http.Response response = await _donationProvider.save(creationDTO.toJson());
-    dynamic convertBody = convertUtf8ToObject(response);
-    Donation donation = Donation.fromJson(convertBody);
-    return donation;
+    // dynamic convertBody = convertUtf8ToObject(response);
+    // Donation donation = Donation.fromJson(convertBody);
+    return;
   }
 
   Future<List<Donation>> findByTargetId(int targetId) async {
