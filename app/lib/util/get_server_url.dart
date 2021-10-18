@@ -1,4 +1,4 @@
-const String serverUrl = "https://694a-3-37-235-153.ngrok.io"; //must be https
+const String serverUrl = "https://donationvisualization.ml"; //must be https
 const String apiPrefix = "api/v1";
 const String publicPath = "public";
 
