@@ -1,0 +1,15 @@
+GET http://localhost:8000/api/v1/targets/
+###
+GET http://localhost:8000/api/v1/targets/1
+###
+POST http://localhost:8000/api/v1/targets
+Content-Type: application/json
+
+{
+  "lat": 35.5,
+  "lng": 126,
+  "objective_won": 10000,
+  "image_url": "assets/test_img.jpg",
+  "name": "test target",
+  "description": "testtesttesttesttesttesttesttesttesttesttesttesttest"
+}

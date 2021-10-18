@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "exec": "ts-node src/app.ts",
+  "ignore": [".git", "node_modules/", "dist/", "src/routes"],
+  "watch": ["src"],
+  "ext": "ts",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "delay": 2500
+}
