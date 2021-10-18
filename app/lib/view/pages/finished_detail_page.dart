@@ -57,107 +57,109 @@ class _FinishedDetailPageState extends State<FinishedDetailPage> {
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
-      body: Container(
-        color: Color(0xffffeed5).withOpacity(0.2),
-        height: double.infinity,
-        child: Column(
-          children: [
-            // Top section
-            Container(
-              alignment: Alignment.center,
-              color: Colors.grey,
-              height: screenHeight(context) * 0.2,
-              width: double.infinity,
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: image == null
-                    ? const CircularProgressIndicator()
-                    : CustomPaint(
-                        painter: ImagePainter(image!),
-                        foregroundPainter: OverlayBoxPainter(
-                          selectedDonation.p1,
-                          selectedDonation.p2,
-                          0xaaff7f00,
-                        ),
-                      ),
-              ),
-            ),
-
-            // Scrollable section
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: ExpansionPanelList(
-                    dividerColor: Colors.grey,
-                    expandedHeaderPadding: EdgeInsets.zero,
-                    animationDuration: const Duration(milliseconds: 500),
-                    expansionCallback: (int index, bool isExpanded) {
-                      setState(() {
-                        expanded.asMap().forEach((i, value) {
-                          if (i == index) {
-                            expanded[i] = !isExpanded;
-                          } else {
-                            expanded[i] = false;
-                          }
-                        });
-                      });
-                    },
-                    children: [
-                      ExpansionPanel(
-                        backgroundColor: Colors.lightBlue[50],
-                        headerBuilder: (BuildContext context, bool isOpened) {
-                          return Text('기부 정보',
-                              style: Theme.of(context).textTheme.headline2);
-                        },
-                        body: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: DonationLists(
-                            targetId: widget.target.id!,
-                            onPressed: changeDonation,
+      body: SafeArea(
+        child: Container(
+          color: Color(0xffffeed5).withOpacity(0.2),
+          height: double.infinity,
+          child: Column(
+            children: [
+              // Top section
+              Container(
+                alignment: Alignment.center,
+                color: Colors.grey,
+                height: screenHeight(context) * 0.2,
+                width: double.infinity,
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: image == null
+                      ? const CircularProgressIndicator()
+                      : CustomPaint(
+                          painter: ImagePainter(image!),
+                          foregroundPainter: OverlayBoxPainter(
+                            selectedDonation.p1,
+                            selectedDonation.p2,
+                            0xaaff7f00,
                           ),
                         ),
-                        isExpanded: expanded[0],
-                        canTapOnHeader: true,
-                      ),
-                      ExpansionPanel(
-                        backgroundColor: Colors.lightBlue[50],
-                        headerBuilder: (BuildContext context, bool isOpened) {
-                          return Text('피드백',
-                              style: Theme.of(context).textTheme.headline2);
-                        },
-                        body: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FeedbackLists(
-                            targetId: widget.target.id!,
-                          ),
-                        ),
-                        isExpanded: expanded[1],
-                        canTapOnHeader: true,
-                      )
-                    ]),
-              ),
-            ),
-
-            // Bottom section
-            Container(
-              color: Color(0xffabcae8),
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "여러분의 감사 인사를 남겨주세요!",
-                      style: (Theme.of(context).textTheme.bodyText1!),
-                    ),
-                    MakeFeedbackButton(
-                      target: widget.target,
-                    ),
-                  ],
                 ),
               ),
-            ),
-          ],
+
+              // Scrollable section
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: ExpansionPanelList(
+                      dividerColor: Colors.grey,
+                      expandedHeaderPadding: EdgeInsets.zero,
+                      animationDuration: const Duration(milliseconds: 500),
+                      expansionCallback: (int index, bool isExpanded) {
+                        setState(() {
+                          expanded.asMap().forEach((i, value) {
+                            if (i == index) {
+                              expanded[i] = !isExpanded;
+                            } else {
+                              expanded[i] = false;
+                            }
+                          });
+                        });
+                      },
+                      children: [
+                        ExpansionPanel(
+                          backgroundColor: Colors.lightBlue[50],
+                          headerBuilder: (BuildContext context, bool isOpened) {
+                            return Text('기부 정보',
+                                style: Theme.of(context).textTheme.headline2);
+                          },
+                          body: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DonationLists(
+                              targetId: widget.target.id!,
+                              onPressed: changeDonation,
+                            ),
+                          ),
+                          isExpanded: expanded[0],
+                          canTapOnHeader: true,
+                        ),
+                        ExpansionPanel(
+                          backgroundColor: Colors.lightBlue[50],
+                          headerBuilder: (BuildContext context, bool isOpened) {
+                            return Text('피드백',
+                                style: Theme.of(context).textTheme.headline2);
+                          },
+                          body: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FeedbackLists(
+                              targetId: widget.target.id!,
+                            ),
+                          ),
+                          isExpanded: expanded[1],
+                          canTapOnHeader: true,
+                        )
+                      ]),
+                ),
+              ),
+
+              // Bottom section
+              Container(
+                color: Color(0xffabcae8),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "여러분의 감사 인사를 남겨주세요!",
+                        style: (Theme.of(context).textTheme.bodyText1!),
+                      ),
+                      MakeFeedbackButton(
+                        target: widget.target,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

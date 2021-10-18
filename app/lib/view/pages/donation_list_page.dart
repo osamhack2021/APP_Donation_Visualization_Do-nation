@@ -26,18 +26,20 @@ class DonationListPage extends StatelessWidget {
               },
             ),
           ),
-          body: ListView.builder(
-            itemCount: targetController.targets.length,
-            itemBuilder: (context, index) => ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 140.0),
-              child: InkWell(
-                onTap: () {
-                  Get.to(
-                    () => DonationDetailPage(),
-                    arguments: targetController.targets[index],
-                  );
-                },
-                child: TargetCard(target: targetController.targets[index]),
+          body: SafeArea(
+            child: ListView.builder(
+              itemCount: targetController.targets.length,
+              itemBuilder: (context, index) => ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 140.0),
+                child: InkWell(
+                  onTap: () {
+                    Get.to(
+                      () => DonationDetailPage(),
+                      arguments: targetController.targets[index],
+                    );
+                  },
+                  child: TargetCard(target: targetController.targets[index]),
+                ),
               ),
             ),
           ),

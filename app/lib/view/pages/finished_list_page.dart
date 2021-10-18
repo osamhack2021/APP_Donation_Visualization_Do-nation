@@ -26,16 +26,18 @@ class FinishedListPage extends StatelessWidget {
               },
             ),
           ),
-          body: ListView.builder(
-            itemCount: targetController.targets.length,
-            itemBuilder: (context, index) => SizedBox(
-              height: 150,
-              child: InkWell(
-                onTap: () {
-                  Get.to(() => FinishedDetailPage(),
-                      arguments: targetController.targets[index]);
-                },
-                child: FinishedCard(target: targetController.targets[index]),
+          body: SafeArea(
+            child: ListView.builder(
+              itemCount: targetController.targets.length,
+              itemBuilder: (context, index) => SizedBox(
+                height: 150,
+                child: InkWell(
+                  onTap: () {
+                    Get.to(() => FinishedDetailPage(),
+                        arguments: targetController.targets[index]);
+                  },
+                  child: FinishedCard(target: targetController.targets[index]),
+                ),
               ),
             ),
           ),
