@@ -109,7 +109,6 @@ class DonationDetailPage extends StatelessWidget {
                       ),
                       MakeDonationButton(
                         target: target,
-                        donationController: donationController,
                       ),
                     ],
                   ),

@@ -25,7 +25,8 @@ class MakeFeedbackButton extends StatelessWidget {
         if (result["done"]) {
           final creationDTO = (result["dto"] as FeedbackCreationDTO);
           creationDTO.targetId = target.id!;
-          feedbackController.save(creationDTO);
+          await feedbackController.save(creationDTO);
+          feedbackController.findByTargetId(target.id!);
         }
       },
       child: const Text('감사 인사하기'),
