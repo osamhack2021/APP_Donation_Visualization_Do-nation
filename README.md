@@ -1,40 +1,60 @@
 # Donation Visualization
 
 ## 프로잭트 소개
-- 사람들의 기부 내역을 시각화 해주는 앱
 
+| ![main_image](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/app/assets/main_img.jpg) | 군대에 있으면서 필요한게 있어도 어떻게 할 수 없는 경우가 종종 있었습니다.<br> 반대로 자녀를 군대에 보낸 부모님은 도움을 주고싶지만 마땅한 방법이 없었습니다.<br> 나라를 지키기 위해 고생하는 장병들과 이를 도와주고자 하는 기부자들 사이의 통로가 필요하다 생각했고<br>기왕이면 좀 더 재밌고 기부하는 보람을 느낄 수 있게 해주자 하는 마음에서<br>기부 시각화 프로그램 **Do!nation** 을 개발하게 되었습니다. |
+| --------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ## 기능 설명
- - 기부 목록 표시
- - 기부자들의 메세지 표시
- - 지도상의 기부장소 표시
- - 2D, 3D, VR 등을 통해 시각화
+
+---
+
+### Do!nation에서는 현재 기부 펀딩중인 항목들을 한눈에 확인할 수 있습니다.
+
+| ![donation_list](https://user-images.githubusercontent.com/23148907/137749920-dcd7f32a-3535-4018-8b38-c58b4102fd44.png){: width="37" height="80"} | Do!nation에서는 도움이 필요한 장병들의 사연을 받아 게시합니다.<br>펀딩 진행 상황은 실시간으로 확인할 수 있으며<br>펀딩이 100% 완료되지 않았을 때를 대비해 중간 목표들을 설정할 수 있습니다. |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+| _기부에 참여하고싶으신가요?_<br>Do!nation은 기부참여 과정을 최소화 하였습니다. 회원가입 과정 대신 <br>이름, 전화번호, 기부금액만 지정하면 즉시 신청 가능합니다. | ![Do! Nation](https://user-images.githubusercontent.com/23148907/137749156-bfe06fd2-8873-48f1-8360-8058ae484227.gif){: width="37" height="80"} |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+
+- 기부 목록 표시
+- 기부자들의 메세지 표시
+- 지도상의 기부장소 표시
+- 2D, 3D, VR 등을 통해 시각화
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
-* ECMAScript 6 지원 브라우저 사용
-* 권장: Google Chrome 버젼 77 이상
-* IOS >= 14 || android >= 10
 
-## 기술 스택 (Technique Used) 
+- ECMAScript 6 지원 브라우저 사용
+- 권장: Google Chrome 버젼 77 이상
+- IOS >= 14 || android >= 10
+
+## 기술 스택 (Technique Used)
+
 ### Server(back-end)
- -  nodejs v14.17.6
- - express[typescript]
- - MySQL, typeorm
- 
+
+- nodejs v14.17.6
+- express[typescript]
+- MySQL, typeorm
+
 ### Front-end
- -  flutter
- -  model-viewer
+
+- flutter
+- model-viewer
 
 ## 설치 안내 (Installation Process)
+
 기능별 README.md 파일 참고
- - [app/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/app/README.md)
- - [server/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/server/README.md)
+
+- [app/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/app/README.md)
+- [server/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/server/README.md)
 
 ## 프로젝트 사용법 (Getting Started)
- 
+
 ## 팀 정보 (Team Information)
+
 - park min jun (minjunsz@gmail.com), Github Id: minjunsz
 - han jeong woo (gkswjddn0968@gmail.com), Github Id: P0BY
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
- * [MIT](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/license.md)
+
+- [MIT](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/license.md)
