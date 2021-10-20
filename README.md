@@ -57,14 +57,12 @@
 ## 프로젝트 사용법 (Getting Started)
 
 ## 개발문서
----
 - [Do!nation 개요](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
 - [아키텍쳐](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Architecture)
 - [클래스 다이어그램](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Class-Diagram)
 <!-- - [개발 가이드](https://github.com/muabe/Propose/wiki/2.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)-->
 
 ## 프로젝트 관리
----
  - [Project Board](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/projects/1)
  - [Issues](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/issues)
  - [ _QnA_ ](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/issues/new)
