@@ -33,3 +33,6 @@ $ sudo snap install flutter --classic
 ```bash
 $ flutter build web
 ```
+
+APP(Android)/build/web 폴더의 결과를 APP(BE)/server/flutter-app 내부에 옮긴 뒤 서버를 빌드하면  
+Express 서버의 root dir을 통해 flutter app을 호스팅할 수 있다.
