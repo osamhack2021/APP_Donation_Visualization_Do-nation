@@ -30,13 +30,13 @@ import { Goal } from "./entity/goal";
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use("/public", express.static(path.join(process.cwd(), "public")));
+  app.use("/public", express.static(path.join(__dirname, "../public")));
 
   app.use(
     "/docs",
     swaggerUI.serve,
     async (_req: ExRequest, _res: ExResponse) => {
-      return _res.send(swaggerUI.generateHTML(await import("../swagger.json")));
+      return _res.send(swaggerUI.generateHTML(await import("./swagger.json")));
     }
   );
 
