@@ -29,7 +29,8 @@
 ## 기대 효과
 - Do!nation을 통해 도움이 필요한 장병들을 이야기를 들을 수 있습니다. <br>
 - 군대간 아들을 걱정하는 부모님의 마음을 전달할 수 있습니다.<br>
-- 부대 발전을 위한 당신의 기부를 기록하고 공유할 수 있습니다.
+- 부대 발전을 위한 당신의 기부를 기록하고 공유할 수 있습니다.<br>
+- 기부 시각화라는 새로운 경험을 통해 기부 참여가 증가할 수 있습니다.
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
@@ -38,21 +39,13 @@
 - IOS >= 14 || android >= 10
 
 ## 기술 스택 (Technique Used)
-개발 구분 | Front-end | Server(back-end)
-:---: | :---: | :---:
-언어 | Dart(2.14.4) | Typescript
-Framework | Flutter(2.5.3) | Node.js(v14.17.6)<br>[Express]
-
 ### Server(back-end)
-
 - nodejs v14.17.6
 - express[typescript]
-- MySQL, typeorm
+- MySQL, typeorm, tsoa, swagger
 
 ### Front-end
-
 - flutter
-- model-viewer
 
 ## 설치 안내 (Installation Process)
 
@@ -62,6 +55,19 @@ Framework | Flutter(2.5.3) | Node.js(v14.17.6)<br>[Express]
 - [server/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/server/README.md)
 
 ## 프로젝트 사용법 (Getting Started)
+
+## 개발문서
+---
+- [Do!nation 개요](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
+- [아키텍쳐](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Architecture)
+- [클래스 다이어그램](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Class-Diagram)
+<!-- - [개발 가이드](https://github.com/muabe/Propose/wiki/2.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)-->
+
+## 프로젝트 관리
+---
+ - [Project Board](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/projects/1)
+ - [Issues](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/issues)
+ - [ _QnA_ ](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/issues/new)
 
 ## 팀 정보 (Team Information)
 
