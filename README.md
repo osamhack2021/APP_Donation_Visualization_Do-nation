@@ -62,10 +62,11 @@
 아래에는 프로젝트에 함께 참여하고싶은 분들을 위해 개발 문서를 정리해 뒀습니다.
 
 ## 개발문서
-- [Do!nation 개요](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
-- [아키텍쳐](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Architecture)
-- [클래스 다이어그램](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Class-Diagram)
+- [Do!nation 이란](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
 - [개발 가이드](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C)
+- [Architecture](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Architecture)
+- [Class Diagram](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Class-Diagram)
+- [DB Schema](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/DB-schema)
 
 ## 프로젝트 관리
  - [Project Board](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/projects/1)
