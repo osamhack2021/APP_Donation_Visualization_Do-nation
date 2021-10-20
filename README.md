@@ -7,6 +7,9 @@
 
 > #### [소개영상 보기](https://youtu.be/BGCgyWY7zg8) <br>
 [![Video Label](http://img.youtube.com/vi/BGCgyWY7zg8/0.jpg)](https://youtu.be/BGCgyWY7zg8)
+
+> #### [시연영상 보기](https://youtu.be/wkawKpnDLA8) <br>
+[![Video Label](http://img.youtube.com/vi/wkawKpnDLA8/0.jpg)](https://youtu.be/wkawKpnDLA8)
 ## 기능 설명
 
 ---
