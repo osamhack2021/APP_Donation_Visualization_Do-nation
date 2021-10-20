@@ -4,7 +4,7 @@
   "controllerPathGlobs": ["src/**/*Controller.ts"],
   "spec": {
     "basePath": "api/v1",
-    "outputDirectory": ".",
+    "outputDirectory": "./src",
     "specVersion": 3
   },
   "routes": {

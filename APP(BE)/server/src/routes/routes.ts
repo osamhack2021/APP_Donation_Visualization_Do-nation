@@ -5,6 +5,8 @@ import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, H
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { DonationsController } from './../donations/donationsController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { FeedbacksController } from './../feedbacks/feedbacksController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { TargetsController } from './../targets/targetsController';
 import * as express from 'express';
 
@@ -19,6 +21,10 @@ const models: TsoaRoute.Models = {
             "message": {"dataType":"string","required":true},
             "pay_won": {"dataType":"double","required":true},
             "targetId": {"dataType":"double","required":true},
+            "x1_coord": {"dataType":"double","required":true},
+            "y1_coord": {"dataType":"double","required":true},
+            "x2_coord": {"dataType":"double","required":true},
+            "y2_coord": {"dataType":"double","required":true},
         },
         "additionalProperties": false,
     },
@@ -47,18 +53,35 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "TargetInfoDTO": {
+    "FeedbackResponseDTO": {
         "dataType": "refObject",
         "properties": {
             "id": {"dataType":"double","required":true},
-            "lat": {"dataType":"double","required":true},
-            "lng": {"dataType":"double","required":true},
-            "objective_won": {"dataType":"double","required":true},
-            "current_won": {"dataType":"double","required":true},
-            "image_url": {"dataType":"string","required":true},
             "name": {"dataType":"string","required":true},
-            "description": {"dataType":"string","required":true},
-            "isFinished": {"dataType":"boolean","required":true},
+            "message": {"dataType":"string","required":true},
+            "image_url": {"dataType":"string"},
+            "targetId": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FeedbackCreationDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "name": {"dataType":"string","required":true},
+            "message": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
+            "image_url": {"dataType":"string"},
+            "targetId": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FeedbackDeleteDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "password": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -75,6 +98,8 @@ const models: TsoaRoute.Models = {
             "description": {"dataType":"string","required":true},
             "isFinished": {"dataType":"boolean","required":true},
             "donations": {"dataType":"array","array":{"dataType":"refObject","ref":"Donation"},"required":true},
+            "feedbacks": {"dataType":"array","array":{"dataType":"refObject","ref":"Feedback"},"required":true},
+            "goals": {"dataType":"array","array":{"dataType":"refObject","ref":"Goal"},"required":true},
         },
         "additionalProperties": false,
     },
@@ -88,8 +113,55 @@ const models: TsoaRoute.Models = {
             "phone": {"dataType":"string","required":true},
             "pay_won": {"dataType":"double","required":true},
             "password": {"dataType":"string","required":true},
+            "x1_coord": {"dataType":"double","default":0},
+            "y1_coord": {"dataType":"double","default":0},
+            "x2_coord": {"dataType":"double","default":0},
+            "y2_coord": {"dataType":"double","default":0},
             "targetId": {"dataType":"double","required":true},
             "target": {"ref":"Target","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Feedback": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "name": {"dataType":"string","required":true},
+            "message": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
+            "image_url": {"dataType":"string"},
+            "targetId": {"dataType":"double","required":true},
+            "target": {"ref":"Target","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Goal": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "goal": {"dataType":"string","required":true},
+            "objective_won": {"dataType":"double","required":true},
+            "targetId": {"dataType":"double","required":true},
+            "target": {"ref":"Target","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TargetInfoDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "lat": {"dataType":"double","required":true},
+            "lng": {"dataType":"double","required":true},
+            "objective_won": {"dataType":"double","required":true},
+            "current_won": {"dataType":"double","required":true},
+            "image_url": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "isFinished": {"dataType":"boolean","required":true},
+            "goals": {"dataType":"array","array":{"dataType":"refObject","ref":"Goal"},"required":true},
         },
         "additionalProperties": false,
     },
@@ -209,10 +281,80 @@ export function RegisterRoutes(app: express.Router) {
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/api/v1/feedbacks',
+
+            function FeedbacksController_getFeedbacksByTargetId(request: any, response: any, next: any) {
+            const args = {
+                    targetId: {"in":"query","name":"targetId","required":true,"dataType":"double"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new FeedbacksController();
+
+
+            const promise = controller.getFeedbacksByTargetId.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/api/v1/feedbacks',
+
+            function FeedbacksController_createFeedback(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"FeedbackCreationDTO"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new FeedbacksController();
+
+
+            const promise = controller.createFeedback.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/api/v1/feedbacks',
+
+            function FeedbacksController_deleteFeedback(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"FeedbackDeleteDTO"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new FeedbacksController();
+
+
+            const promise = controller.deleteFeedback.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/api/v1/targets',
 
             function TargetsController_getAllTarget(request: any, response: any, next: any) {
             const args = {
+                    isFinished: {"in":"query","name":"isFinished","dataType":"boolean"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
