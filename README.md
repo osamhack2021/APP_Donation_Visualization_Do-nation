@@ -59,7 +59,7 @@
 ## 프로젝트 사용법 (Getting Started)
 결과물을 보고싶으신가요? [직접 확인해보세요!](https://donationvisualization.ml)   
 간편하게 기부 예약을 하고 완료된 기부 목록에서 자신의 기여도를 확인할 수 있습니다.   
-프로젝트에 함께 참여하고싶은 분들을 위해 개발 문서를 정리해 뒀습니다.
+아래에는 프로젝트에 함께 참여하고싶은 분들을 위해 개발 문서를 정리해 뒀습니다.
 
 ## 개발문서
 - [Do!nation 개요](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
