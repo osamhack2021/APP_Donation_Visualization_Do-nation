@@ -31,6 +31,7 @@ import { Goal } from "./entity/goal";
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use("/public", express.static(path.join(__dirname, "../public")));
+  app.use(express.static(path.join(__dirname, "../flutter-app")));
 
   app.use(
     "/docs",
