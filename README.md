@@ -51,16 +51,19 @@
 
 기능별 README.md 파일 참고
 
-- [app/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/app/README.md)
-- [server/README.md](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/server/README.md)
+- [Front-end](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/APP(Android)/README.md)
+- [Back-end](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/blob/main/APP(BE)/README.md)
 
 ## 프로젝트 사용법 (Getting Started)
+결과물을 보고싶으신가요? [직접 확인해보세요!](https://donationvisualization.ml)   
+간편하게 기부 예약을 하고 완료된 기부 목록에서 자신의 기여도를 확인할 수 있습니다.   
+프로젝트에 함께 참여하고싶은 분들을 위해 개발 문서를 정리해 뒀습니다.
 
 ## 개발문서
 - [Do!nation 개요](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Do!nation-%EA%B0%9C%EC%9A%94)
 - [아키텍쳐](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Architecture)
 - [클래스 다이어그램](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/Class-Diagram)
-<!-- - [개발 가이드](https://github.com/muabe/Propose/wiki/2.-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)-->
+- [개발 가이드](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/wiki/%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C)
 
 ## 프로젝트 관리
  - [Project Board](https://github.com/osamhack2021/APP_Donation_Visualization_Do-nation/projects/1)
