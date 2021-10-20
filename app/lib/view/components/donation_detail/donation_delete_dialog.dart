@@ -87,8 +87,10 @@ class _DonationDeleteDialogState extends State<DonationDeleteDialog> {
                     "dto": dto,
                   });
                 },
-                child:
-                    const Text('삭제하기', style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  '삭제하기',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               const SizedBox(width: 5.0),
               OutlinedButton(
