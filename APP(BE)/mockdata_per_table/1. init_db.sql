@@ -5,6 +5,19 @@
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ do_nation /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE do_nation;
 
+DROP TABLE IF EXISTS target;
+CREATE TABLE `target` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `objective_won` int NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `isFinished` tinyint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 DROP TABLE IF EXISTS donation;
 CREATE TABLE `donation` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -47,15 +60,3 @@ CREATE TABLE `goal` (
   CONSTRAINT `FK_25132c1c9253c64722630f5ccdc` FOREIGN KEY (`targetId`) REFERENCES `target` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
-DROP TABLE IF EXISTS target;
-CREATE TABLE `target` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `lat` double NOT NULL,
-  `lng` double NOT NULL,
-  `objective_won` int NOT NULL,
-  `image_url` varchar(255) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `isFinished` tinyint NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
